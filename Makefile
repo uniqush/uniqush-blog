@@ -11,9 +11,10 @@ FTP_HOST=localhost
 FTP_USER=anonymous
 FTP_TARGET_DIR=/
 
-SSH_HOST=locahost
-SSH_USER=root
-SSH_TARGET_DIR=/var/www
+SSH_HOST=uniqush.org
+SSH_USER=monnand
+SSH_TARGET_DIR=/home/uniqush/blog
+SSH_PORT=1128
 
 DROPBOX_DIR=~/Dropbox/Public/
 
@@ -43,7 +44,7 @@ dropbox_upload: $(OUTPUTDIR)/index.html
 	cp -r $(OUTPUTDIR)/* $(DROPBOX_DIR)
 
 ssh_upload: $(OUTPUTDIR)/index.html
-	scp -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
+	scp -P $(SSH_PORT) -r $(OUTPUTDIR)/* $(SSH_USER)@$(SSH_HOST):$(SSH_TARGET_DIR)
 
 ftp_upload: $(OUTPUTDIR)/index.html
 	lftp ftp://$(FTP_USER)@$(FTP_HOST) -e "mirror -R $(OUTPUT_DIR)/* $(FTP_TARGET_DIR) ; quit"

@@ -17,10 +17,13 @@ LINKS =  (
 
 # Social widget
 SOCIAL = (
-          ('You can add links in your config file', '#'),
+            ('twitter', 'http://twitter.com/monnand'),
          )
 
-THEME = 'tuxlite_tbs'
+THEME = 'bootstrap'
+
+TWITTER_USERNAME = 'monnand'
 
 DEFAULT_PAGINATION = 7
 
+DISQUS_SITENAME = 'uniqushblog'

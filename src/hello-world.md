@@ -1,8 +1,8 @@
 Date: 2012-03-02
 Title: Hello World! Hello Uniqush!
 Tags: uniqush, golang
+Category: misc
 
 I started [uniqush](http://uniqush.org) from Aug. 2011 when I was reading documents about push service.
 
-Test
 
