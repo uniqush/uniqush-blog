@@ -20,10 +20,12 @@ SOCIAL = (
             ('twitter', 'http://twitter.com/monnand'),
          )
 
-THEME = 'bootstrap'
+THEME = 'Just-Read' #'tuxlite_tbs' #'bootstrap'
 
 TWITTER_USERNAME = 'monnand'
 
 DEFAULT_PAGINATION = 7
 
 DISQUS_SITENAME = 'uniqushblog'
+
+#DEFAULT_CATEGORY = 'uniqush'
