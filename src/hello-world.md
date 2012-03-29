@@ -3,7 +3,7 @@ Title: Hello World! Hello Uniqush!
 Tags: uniqush, golang
 Slug: hello-world
 
-I started [uniqush](http://uniqush.org) from Aug. 2011, when I was reading
+I started [uniqush](http://uniqush.org) in Aug. 2011, when I was reading
 documents about push service. The idea of this project is simple: build a
 software as a proxy between the app server and push services, so that the
 server side programmer could use a simple and consistent interface to push

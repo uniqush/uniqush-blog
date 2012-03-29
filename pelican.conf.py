@@ -17,12 +17,12 @@ LINKS =  (
 
 # Social widget
 SOCIAL = (
-            ('twitter', 'http://twitter.com/monnand'),
+            ('twitter', 'http://twitter.com/uniqush'),
          )
 
-THEME = 'Just-Read' #'tuxlite_tbs' #'bootstrap'
+THEME = 'tuxlite_tbs' #'bootstrap'
 
-TWITTER_USERNAME = 'monnand'
+TWITTER_USERNAME = 'uniqush'
 
 DEFAULT_PAGINATION = 7
 
