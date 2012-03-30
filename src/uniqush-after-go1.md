@@ -23,7 +23,7 @@ In the future, the uniqush project will mainly consists of four
 parts: *uniqush-push*, *uniqush-conn*, *uniqush-front* and *uniqush-mobile-libs*. I would
 explain each of them in the following sections.
 
-### uniqushd becomes uniqush-push
+### uniqushd becomes uniqush-push (done)
 
 Currently, uniqushd is the only program we provide in uniqush
 project. The function of this program is to behave as a proxy between
