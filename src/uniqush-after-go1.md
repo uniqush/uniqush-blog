@@ -2,6 +2,7 @@ Date: 2012-04-28
 Title: Uniqush after Go 1
 Tags: uniqush, golang, Go1, plan
 Slug: uniqush-after-go1
+Category: plan
 
 Today, March 28th 2012, is a big day for every gopher: Go team
 [released Go version 1](http://blog.golang.org/2012/03/go-version-1-is-released.html). This
@@ -50,11 +51,11 @@ app is in front, i.e. user is using the app on his phone now. If the
 server sends a message to the app now, the server may want to use this
 direct connection instead of push service cloud to send this message.
 
-In an example of online chat app, the user A sends a message to the
-user B. A first start his app on the phone. The app then connects to
-the server saying "Hey, I'm A and am online now". From now on, the
-app on user A's phone is active now and a connection between the app
-on A's phone and the server is established. The user A wants to chat
+In an example of online chat app, user A sends a message to
+user B. User A first start his app on the phone. The app then connects to
+the server saying "I'm A and am online now". From now on, the
+app on user A's phone is active and a connection between the app
+ and the server is established. User A wants to chat
 with B. He types in some message, click send button and the message is
 sent to the server through the newly established connection. The
 server unpacks the message seeing it is a message for B. It checks
@@ -74,8 +75,8 @@ online or not. *uniqush-conn* can deal with it and decide whether send
 message through a direct connection, or through *uniqush-push*.
 
 Now we can see the benefit. As a server-side developer, you only need
-to send a message to *uniqush-conn*, and say "Send this message to the
-user B". Then you are done. What if the user B was offline? Well,
+to send a message to *uniqush-conn*, and say "Send this message to
+user B". Then you are done. What if the user B was offline? Well, 
 *uniqush-conn* could then automatically tell *uniqush-push* to push a
 notification to user B. If the message if too big to be fit into a
 notification, *uniqush-conn* will send a notification to user B,
@@ -105,7 +106,7 @@ figure out which instance of *uniqush-conn* should be use. Adding more
 node will not be a pain because the server side program won't be
 changed.
 
-uniqush-mobile-libs helps app developers
+### uniqush-mobile-libs helps app developers
 
 *uniqush-conn* keeps connections between apps and the server. It also
  sends messages, commands to apps. The app developers do not need to
@@ -125,3 +126,10 @@ I wish I can make it faster. But sorry for disappointing you, it seems
 impossible for me: there is only one developer in this project, and
 yes, I am the developer. If you are interested in this project and
 want to make your own contribution, please feel free to contact me.
+
+### Update
+
+As I mentioned, *uniqush-push* is online now. It is more than a
+renaming work. All related documents are changed respectively. If you
+find any inconsistence between the document and the code, please let
+me know. Thank you very much.
