@@ -1,4 +1,4 @@
-Date: 2012-04-28
+Date: 2012-03-28
 Title: Uniqush after Go 1
 Tags: uniqush, golang, Go1, plan
 Slug: uniqush-after-go1
