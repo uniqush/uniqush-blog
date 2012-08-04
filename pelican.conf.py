@@ -12,7 +12,7 @@ DEFAULT_LANG='en'
 # Blogroll
 LINKS =  (
           ('uniqush.org', 'http://uniqush.org'),
-          ('uniqush on github', 'http://github.com/monnand/uniqush'),
+          ('uniqush on github', 'http://github.com/uniqush'),
          )
 
 # Social widget
