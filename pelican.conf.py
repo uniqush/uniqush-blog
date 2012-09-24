@@ -3,7 +3,7 @@
 
 AUTHOR = u"Monnand"
 SITENAME = u"Uniqush Blog"
-SITEURL = '/'
+SITEURL = 'http://blog.uniqush.org'
 
 TIMEZONE = 'Europe/Paris'
 
