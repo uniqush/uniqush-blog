@@ -10,5 +10,8 @@ Blog on [blog.uniqush.org](http://blog.uniqush.org)
 
 - Install the theme
 
-	git clone git://github.com/getpelican/pelican-themes.git
-	pelican-thems -i tuxlite_tbs
+        git clone git://github.com/getpelican/pelican-themes.git
+        pelican-thems -i tuxlite_tbs
+
+- Then use `make html` to generate the whole blog site.
+
