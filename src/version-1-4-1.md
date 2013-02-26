@@ -99,10 +99,11 @@ service providers and old *main* package can hardly support the new interface.
 
 ### What about... uniqush-conn?
 
-Sorry! I didn't expect that some essential parts is missing in Go and I have to
-write them by my own. More specificly, I have already written a [Diffie-Hellman
-Key Exchange library in Go](https://github.com/monnand/dhkx), and I am going to
-implement RSASSA-PSS signature algorithm later.
+Sorry! I didn't expect that some essential parts are missing in Go and I have
+to write them by my own. More specifically, I have already written a
+[Diffie-Hellman Key Exchange library in Go](https://github.com/monnand/dhkx),
+and I am going to implement RSASSA-PSS signature algorithm later. Even though,
+I still want to use Go on server side, simply because it is too much fun.
 
 With that being said, uniqush-conn will be delayed, again. 
 
