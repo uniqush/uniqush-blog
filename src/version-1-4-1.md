@@ -4,7 +4,7 @@ Tags: news, uniqush, release note
 Slug: uniqush-push-1-4-1
 Category: news
 
-Today, I have release uniqush-push 1.4.1, whose [release note] is available now
+Today, I have released uniqush-push 1.4.1, whose [release note] is available now
 along its binary files. It is highly recommended to update to this version,
 since there will be some non-deterministic bugs in old versions. In this blog,
 I will first go through the changes and explain some of them in details.
