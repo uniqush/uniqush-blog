@@ -44,7 +44,7 @@ Service] much better. In the [Feedback Service]'s document, it says:
 However, *uniqush-push* does not keep the information like creation time of
 each delivery point. To avoid unnecessary unsubscription, *uniqush-push* will
 check the feedback after each push operation. This is not the optimal solution
-and it will be fixed in next version.
+and it will be fixed in the next version.
 
 [release note]: http://uniqush.org/release-notes/rn-uniqush-push-1-4-2.html
 [Feedback Service]: http://bit.ly/Zif0VM
