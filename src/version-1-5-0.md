@@ -61,9 +61,9 @@ the public. Secondly, releasing a software means taking responsibility.
 [uniqush-conn] would be an important component for our users' system. I have to
 make sure it works and works well.
 
-Before release it, I would like to first write some app and actually eat my own
-dog food. An IM app will be developed to test the [uniqush] system as a whole
-and I will invite my family and friends to use the app. Once it was fully
+Before releasing it, I would like to first write some app and actually eat my own
+dog food. An IM app will be developed to test the [uniqush] system as a whole.
+I will invite my family and friends to use the app. Once it was fully
 tested, I will release it along with detailed documentation.
 
 [release note]: http://uniqush.org/release-notes/rn-uniqush-push-1-5-0.html
