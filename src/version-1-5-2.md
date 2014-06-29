@@ -4,7 +4,9 @@ Tags: news, release note
 Slug: uniqush-push-1-5-2
 Category: news
 
-Sorry for my absense since November 2013. I was preparing other things and
+*TL;DR*: Please checkout our [release note] for version 1.5.2.
+
+Sorry for my absence since November 2013. I was preparing other things and
 working on other projects. During this period, I received several bug reports
 related to [uniqush-push]. Some of them indicating some large service is
 currently using uniqush-push as their backend push service, while some of them
