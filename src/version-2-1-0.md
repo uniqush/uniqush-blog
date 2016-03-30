@@ -3,6 +3,7 @@ Title: Release 2.1.0
 Tags: news, release note
 Slug: uniqush-push-2-1-0
 Category: news
+Authors: Misha Nasledov
 
 Please check out our [release notes] for version 2.1.0.
 

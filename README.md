@@ -11,7 +11,7 @@ Blog on [blog.uniqush.org](http://blog.uniqush.org)
 - Install the theme
 
         git clone git://github.com/getpelican/pelican-themes.git
-        pelican-thems -i tuxlite_tbs
+        pelican-themes -i pelican-themes/tuxlite_tbs
 
 - Then use `make html` to generate the whole blog site.
 
