@@ -12,7 +12,7 @@ I will first go through the changes and explain some of them in details.
 The changes in this version contains some improvements and bug fixes:
 
 - *improvement* On (un)subscription, the log message now contains service and
-  subscriber information. Fixed [issue 2]. 
+  subscriber information. Fixed [issue 2].
 - *improvement* On adding an APNS push service provider, uniqush-push will
   report error immediately if the given certificate or key files do not exist.
 Fixed [issue 6].
@@ -57,12 +57,12 @@ In the blog post, Russ Cox said:
 Given the C/C++ background I had, the sentences above, to me, were like saying:
 use a memory pool under whatever condition if you want to have a fast program.
 
-Then I made a memory pool. That is the begining of the nightmare. I received
+Then I made a memory pool. That is the beginning of the nightmare. I received
 several bug reports on the mailing list saying that they observed some very
 weird behavior. For example, some client received a message which should be
 sent to another one. I tried to re-produce their bugs bug failed.
 
-Finally, I reallized that the push service provider and delivery point
+Finally, I realized that the push service provider and delivery point
 structures were not cleared before putting back to the memory pool. This
 reminded me about the weird bugs on the mailing list.
 
@@ -84,17 +84,17 @@ OK. this is a strong word for developers. Yes, I rewrote the whole *main* packag
 I have to say that developing *uniqush* is really a learning process to me. I
 developed quite a few programs, some of them are even widely used. However, I
 haven't taken care of a project before uniqush. In uniqush, I have to write
-correct code while making sure it can envolve in a healthy way. This includes
+correct code while making sure it can evolve in a healthy way. This includes
 correcting my own mistakes and bad decisions in the code.
 
-Refactorying the whole *main* package is correcting my bad design decision. I
+Refactoring the whole *main* package is correcting my bad design decision. I
 made a wrong choice of using channels and goroutines in Go making the *main*
 package cumbersome and hard to maintain. After this refactoring, the whole
 *main* package contains only four files and reduced around a thousand of lines
 of code. (You can see this fact from the [code frequency](https://github.com/uniqush/uniqush-push/graphs/code-frequency).)
 
 Besides, since I am going to support [feedback service] in APNS, such
-refactorying in inevitable. The service requires a new interface for push
+refactoring in inevitable. The service requires a new interface for push
 service providers and old *main* package can hardly support the new interface.
 
 ### What about... uniqush-conn?
@@ -105,7 +105,7 @@ to write them by my own. More specifically, I have already written a
 and I am going to implement RSASSA-PSS signature algorithm later. Even though,
 I still want to use Go on server side, simply because it is too much fun.
 
-With that being said, uniqush-conn will be delayed, again. 
+With that being said, uniqush-conn will be delayed, again.
 
 [issue 2]: https://github.com/uniqush/uniqush-push/issues/2
 [issue 6]: https://github.com/uniqush/uniqush-push/issues/6

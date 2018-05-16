@@ -34,7 +34,7 @@ For developers, a unified interface for push notification would be a very
 useful component. Interestingly, Amazon seems have same idea in mind. Just
 several weeks ago, Amazon released another service named
 [SNS]. What they are doing is quite similar to what [uniqush-push] is
-providing (and they charge users for it.) 
+providing (and they charge users for it.)
 
 Supporting [ADM] fixed the very piece of [uniqush-push]: Now, we can say that
 we supports major Android platforms with more confidence.
@@ -45,7 +45,7 @@ we supports major Android platforms with more confidence.
 asks for support of Chrome apps. I think it would be a very good step for the
 next release. (This means, we will quickly move to version 1.6.0 if we want to
 keep the same versioning convention.) I don't need to buy another device to
-support it (Buying a Kindle Fire HD cost me $159 even if it was on sale.) 
+support it (Buying a Kindle Fire HD cost me $159 even if it was on sale.)
 
 ### Hey, do you remember uniqush-conn?
 

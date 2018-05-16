@@ -6,30 +6,30 @@ Category: news
 
 This version is mainly a bug-fix version. See the [release note] for more
 details. I will briefly explain each point below. (This version is released on
-April 1st. But it is **really not** a joke, I promis.)
+April 1st. But it is **really not** a joke, I promise.)
 
 ### Proper stop
 
 - *bugfix* Stop on */stop*. Sorry, I forgot to implement the feature after
   refactoring the main package. Fixed [issue 9].
 - *bugfix* Stop on *SIGTERM*. Similar with [issue 9]. User can now stop the
-  program by sending *SIGTERM* to the process. Fixed [issue 8]. 
+  program by sending *SIGTERM* to the process. Fixed [issue 8].
 
-The previours two bug fixes implemented what I promised in the document. Due to
-the refactorying in version 1.4.1, this feature was not implemented,
+The previous two bug fixes implemented what I promised in the document. Due to
+the refactoring in version 1.4.1, this feature was not implemented,
 accidentally.
 
 ### Nil-pointer crash
 
 - *bugfix* Fixed a nil-pointer crash bug. The program will experience a
-  nil-pointer crash (samething as NULL pointer) under some conditions. For
+  nil-pointer crash (same thing as NULL pointer) under some conditions. For
 example, if user provides an invalid APIKEY for a GCM provider, then
 uniqush-push will crash when the user tries to push through this malformed
 provider. Fixed [issue 10].
 
 Thank you, Fabrizio! Your [bug report] helps me a lot on this bug.
 
-### Feeback Service in APNS
+### Feedback Service in APNS
 
 - *feature* Support [Feedback Service] in APNS. Fixed [issue 3].
 
@@ -39,7 +39,7 @@ Service] much better. In the [Feedback Service]'s document, it says:
 > You should use the timestamp to determine if the application on the device
 > re-registered with your service since the moment the device token was
 > recorded on the feedback service. If it hasn’t, you should cease sending push
-> notifications to the device. 
+> notifications to the device.
 
 However, *uniqush-push* does not keep the information like creation time of
 each delivery point. To avoid unnecessary unsubscription, *uniqush-push* will

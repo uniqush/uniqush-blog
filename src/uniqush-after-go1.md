@@ -28,7 +28,7 @@ explain each of them in the following sections.
 Currently, uniqushd is the only program we provide in uniqush
 project. The function of this program is to behave as a proxy between
 third party server and push service cloud (C2DM, APNs, etc.) so that
-the third party server can push messages to many platforms (andoird,
+the third party server can push messages to many platforms (Android,
 iOS) in a consistent syntax without knowing protocols on different
 clouds.
 
@@ -76,7 +76,7 @@ message through a direct connection, or through *uniqush-push*.
 
 Now we can see the benefit. As a server-side developer, you only need
 to send a message to *uniqush-conn*, and say "Send this message to
-user B". Then you are done. What if the user B was offline? Well, 
+user B". Then you are done. What if the user B was offline? Well,
 *uniqush-conn* could then automatically tell *uniqush-push* to push a
 notification to user B. If the message if too big to be fit into a
 notification, *uniqush-conn* will send a notification to user B,
@@ -114,7 +114,7 @@ changed.
  *uniqush-conn*. *uniqush-mobile-libs* will contain libraries for
  popular mobile platforms so that app developers can use it to
  communicate with *uniqush-conn*, hence with the server side program.
- 
+
 ### When?
 
 *uniqush-push* is already there. I only need to change its name from
