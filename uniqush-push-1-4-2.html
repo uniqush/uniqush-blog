@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - Release 1.4.2</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>Release 1.4.2</h1>
+Mon 01 April 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+        </div>
+	
+        <div><p>This version is mainly a bug-fix version. See the <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-2.html">release note</a> for more
+details. I will briefly explain each point below. (This version is released on
+April 1st. But it is <strong>really not</strong> a joke, I promise.)</p>
+<h3>Proper stop</h3>
+<ul>
+<li><em>bugfix</em> Stop on <em>/stop</em>. Sorry, I forgot to implement the feature after
+  refactoring the main package. Fixed <a href="https://github.com/uniqush/uniqush-push/issues/9">issue 9</a>.</li>
+<li><em>bugfix</em> Stop on <em>SIGTERM</em>. Similar with <a href="https://github.com/uniqush/uniqush-push/issues/9">issue 9</a>. User can now stop the
+  program by sending <em>SIGTERM</em> to the process. Fixed <a href="https://github.com/uniqush/uniqush-push/issues/8">issue 8</a>.</li>
+</ul>
+<p>The previous two bug fixes implemented what I promised in the document. Due to
+the refactoring in version 1.4.1, this feature was not implemented,
+accidentally.</p>
+<h3>Nil-pointer crash</h3>
+<ul>
+<li><em>bugfix</em> Fixed a nil-pointer crash bug. The program will experience a
+  nil-pointer crash (same thing as NULL pointer) under some conditions. For
+example, if user provides an invalid APIKEY for a GCM provider, then
+uniqush-push will crash when the user tries to push through this malformed
+provider. Fixed <a href="https://github.com/uniqush/uniqush-push/issues/10">issue 10</a>.</li>
+</ul>
+<p>Thank you, Fabrizio! Your <a href="https://groups.google.com/forum/?fromgroups=#!topic/uniqush/dw5QyNkb3ro">bug report</a> helps me a lot on this bug.</p>
+<h3>Feedback Service in APNS</h3>
+<ul>
+<li><em>feature</em> Support <a href="http://bit.ly/Zif0VM">Feedback Service</a> in APNS. Fixed <a href="https://github.com/uniqush/uniqush-push/issues/3">issue 3</a>.</li>
+</ul>
+<p>I would say this is partly supported. The next version will support <a href="http://bit.ly/Zif0VM">Feedback
+Service</a> much better. In the <a href="http://bit.ly/Zif0VM">Feedback Service</a>'s document, it says:</p>
+<blockquote>
+<p>You should use the timestamp to determine if the application on the device
+re-registered with your service since the moment the device token was
+recorded on the feedback service. If it hasn’t, you should cease sending push
+notifications to the device.</p>
+</blockquote>
+<p>However, <em>uniqush-push</em> does not keep the information like creation time of
+each delivery point. To avoid unnecessary unsubscription, <em>uniqush-push</em> will
+check the feedback after each push operation. This is not the optimal solution
+and it will be fixed in the next version.</p></div>
+	
+        <hr>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Release 1.4.2" data-via="uniqush">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'uniqushblog'; 
+    var disqus_title = 'Release 1.4.2';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2016</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

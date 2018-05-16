@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - Release 1.4.4</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>Release 1.4.4</h1>
+Sat 20 July 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+        </div>
+	
+        <div><p>This version contains some minor bug fixes and a <em>huge</em> improvement for APNS. I
+would like to give special thanks to <a href="https://github.com/cmabastar-gumi">cmabastar-gumi</a> for his detailed bug
+reports. Please check the <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-4.html">release note</a> for detailed ChangeLog.</p>
+<p>In this post, I will explain more about how I improved the performance for
+APNS.</p>
+<h3>Overview</h3>
+<p>Both <a href="https://github.com/uniqush/uniqush-push/issues/24">issue 24</a> and <a href="https://github.com/uniqush/uniqush-push/issues/27">issue 27</a> described a poor performance when pushing
+notification through APNS. After a brief profiling, I made three changes:</p>
+<ul>
+<li>Checking <a href="http://bit.ly/Zif0VM">Feedback Service</a> less frequently.</li>
+<li>Using a <a href="http://github.com/uniqush/connpool">connection pool</a> to send notifications in parallel.</li>
+<li>Response the request immediately after sending the notification, without
+  waiting for the error response from APNS.</li>
+</ul>
+<h3>Checking feedback service less frequently</h3>
+<p>Starting from version 1.4.2, <em>uniqush-push</em> supports <a href="http://bit.ly/Zif0VM">Feedback Service</a> for
+APNS. Both version 1.4.2 and version 1.4.3 have a very naive approach
+for <a href="http://bit.ly/Zif0VM">Feedback Service</a>: <em>uniqush-push</em> checks feedbacks after every
+push operation. This is very inefficient because it has to establish a new
+TCP connection every time.</p>
+<p>In version 1.4.4, <em>uniqush-push</em> checks the feedback for every 10 minutes.
+Although it may be better to provide a parameter for user to set this time
+interval to other values, I see no strong benefit by providing this parameter.
+At this point of time, I would rather use a constant time interval (10 minutes)
+and keep a simple interface for users.</p>
+<h3>Using connection pools</h3>
+<p>Before version 1.4.4, <em>uniqush-push</em> maintains one single connection with APNS
+for each APNS key/certificate pair. Clearly, using a connection pool could
+improve the performance when we have concurrent request, since we can send
+notifications in parallel through several TCP connections. However, APNS'
+document does not clearly say how many connections we can have for each
+key/certificate pair. According to <a href="http://stackoverflow.com/questions/9086956/what-is-the-number-of-persistent-connections-to-apns-allowed">discussion on
+stackoverflow</a>,
+15 connections would be find in most cases. In version 1.4.4, we use at most 13
+connections for each key/certificate pair.</p>
+<p>As a byproduct, a general <a href="http://github.com/uniqush/connpool">connection pool library</a> in Go is available on github.</p>
+<h3>No wait for the error response</h3>
+<p>OK. This is a trade off we made here. As an asynchronous service, APNS cannot
+guarantee the response time for the error response. What's worse, it does not
+even guarantee that there will be a response.</p>
+<p>Fortunately, most errors can be checked before sending notifications to APNS.
+In version 1.4.4, <em>uniqush-push</em> returns success immediately once the
+notification has been sent to APNS. Some error like <em>invalid token</em> can be
+processed later inside <em>uniqush-push</em>. In most cases, we are good.</p>
+<h3>Conclusion</h3>
+<p>After making the changes above, the performance for APNS is improved ~100x.
+Let's quote <a href="https://github.com/cmabastar-gumi">cmabastar-gumi</a>'s test results mentioned in reply to <a href="https://github.com/uniqush/uniqush-push/issues/27">issue 27</a>:</p>
+<blockquote>
+<p>we were able to send 22k messages in less than 3mins and we were also able to
+test around 68k users to be subscribed in around 5mins. Thanks for this
+build! It's damn fast!</p>
+</blockquote></div>
+	
+        <hr>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Release 1.4.4" data-via="uniqush">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'uniqushblog'; 
+    var disqus_title = 'Release 1.4.4';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2016</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

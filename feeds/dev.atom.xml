@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Uniqush Blog - dev</title><link href="http://blog.uniqush.org/" rel="alternate"></link><link href="http://blog.uniqush.org/feeds/dev.atom.xml" rel="self"></link><id>http://blog.uniqush.org/</id><updated>2012-09-23T00:00:00+02:00</updated><entry><title>Making your own contribution to uniqush</title><link href="http://blog.uniqush.org/howto-contribute.html" rel="alternate"></link><published>2012-09-23T00:00:00+02:00</published><updated>2012-09-23T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-09-23:/howto-contribute.html</id><summary type="html">&lt;p&gt;&lt;a href="http://uniqush.org"&gt;Uniqush&lt;/a&gt; now is receiving a growing attention from both users and developers.
+Some people have already contacted me personally or publicly saying they are
+willing to make there own contribution to &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;. Some of them have already
+made a pull request on GitHub.&lt;/p&gt;
+&lt;p&gt;It is really an honor to receive …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://uniqush.org"&gt;Uniqush&lt;/a&gt; now is receiving a growing attention from both users and developers.
+Some people have already contacted me personally or publicly saying they are
+willing to make there own contribution to &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;. Some of them have already
+made a pull request on GitHub.&lt;/p&gt;
+&lt;p&gt;It is really an honor to receive those talent works, merge them into our
+repositories and make a better system through this process. To make it more
+efficient and less error-prone, a new document on &lt;a href="http://uniqush.org/documentation/contribute.html"&gt;how to make a contribution&lt;/a&gt;
+is online now. It is highly recommended to &lt;em&gt;read
+&lt;a href="http://uniqush.org/documentation/contribute.html"&gt;this&lt;/a&gt; document first&lt;/em&gt; before
+making any contribution to &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some highlighted part of the document:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For all source code repositories, there are three branches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;master branch, contains the most recent changes, which are tested and will be
+  contained in the next release version. Normally, the code in master branch
+should compile and pass some basic test cases.&lt;/li&gt;
+&lt;li&gt;exp branch, contains the most recent changes, which may contain bugs, or even
+  not be compiled. &lt;strong&gt;Every contribution should be made based on exp branch&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;go1 branch (or release branch). If it is a repository contains
+  &lt;a href="http://golang.org"&gt;go&lt;/a&gt; code, then this branch is named &lt;em&gt;go1&lt;/em&gt;; otherwise, it
+is named &lt;em&gt;release&lt;/em&gt;. As the name suggested, it contains the latest release
+version of the code. Please &lt;em&gt;DO NOT&lt;/em&gt; make contribution based on this branch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to contribute your source code, please make sure your changes are
+based on &lt;em&gt;exp&lt;/em&gt; branch, because we put our latest code there. It would be better
+to put your changed version in an individual branch or at least in &lt;em&gt;exp&lt;/em&gt;
+branch, and then send your pull request on github. Before doing any work, you
+may want to read &lt;a href="https://help.github.com/articles/fork-a-repo"&gt;this document&lt;/a&gt;
+from &lt;a href="http://github.com"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Please feel free to contribute your code, bug reports, ideas, suggests to this
+project.  Whatever your contribution is, it is essential to us and all users in
+this community. We appreciate your support!&lt;/p&gt;</content><category term="uniqush"></category><category term="develop"></category></entry></feed>

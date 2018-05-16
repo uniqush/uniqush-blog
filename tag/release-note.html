@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - release note</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://blog.uniqush.org/uniqush-push-2-1-0.html"><h1>Release 2.1.0</h1></a>
+Wed 09 March 2016
+
+by <a class="url fn" href="http://blog.uniqush.org/author/misha-nasledov.html">Misha Nasledov</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>Please check out our <a href="http://uniqush.org/release-notes/rn-uniqush-push-2-1-0.html">release notes</a> for version 2.1.0.</p>
+<p>New APIs have been added: one for listing the subscriptions of a subscriber and
+another for showing the configurations of the push service providers for services that
+exist.</p>
+<p>Concurrency issues in ADM and APNS have been fixed. The APNS implementation
+has been changed to use a new, reliable worker pool implementation.</p>
+<p>This implementation has been running reliably at production scale, at a company named
+<em>if(we)</em>, sending push notifications for the Tagged and hi5 social networks
+for a while now (nearly a year at time of writing).
+The company has 12 processes handling a peak of 60 APNS push notifications per second,
+and the tier is overprovisioned in order to be able to deal with
+traffic increases and potential surges. That's about 5 APNS push notifications
+per process per second. In addition, <em>if(we)</em> sends about 270 GCM push notifications
+per second distributed amongst these same processes, which adds about another
+22 GCM push notifications per second each process sends. The subscribe API
+on the tier ends up getting hit about 500 times per second (about 42 queries
+per process per second). So, each process is handling about 70 queries a second
+easily. <em>if(we)</em> has been running without any issues for many months, especially after
+fixing some bugs that eventually manifested only at their scale.</p>
+<p>A bug which could lead to infinite loops in rare circumstances has been fixed.</p>
+<p>The APNS implementation no longer uses Go's default HTML escaping of JSON
+payloads. The APNS servers now render payloads with characters such as '"'
+properly.</p>
+<p>More details have been added to error messages so that problems can be
+debugged more easily.</p>
+<p>The APNS implementation has also been updated to deal with 100-byte APNS
+device tokens (previously 32-bytes) which Apple said it would roll out in 2016.</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-push-2-0-0.html"><h2>Release 2.0.0</h2></a>
+        <div class= "well small"> Tue 08 March 2016
+
+by <a class="url fn" href="http://blog.uniqush.org/author/misha-nasledov.html">Misha Nasledov</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Please check out our <a href="http://uniqush.org/release-notes/rn-uniqush-push-2-0-0.html">release notes</a> for version 2.0.0.</p>
+<p>We've improved the response format of most APIs. Instead of sending server logs
+back, they now return JSON response objects. This makes it easy to distinguish
+successes from failures. For example, when sending push notifications to a subscriber with …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-push-2-0-0.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-push-1-5-2.html"><h2>Release 1.5.2</h2></a>
+        <div class= "well small"> Sun 29 June 2014
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p><em>TL;DR</em>: Please checkout our <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-2.html">release note</a> for version 1.5.2.</p>
+<p>Sorry for my absence since November 2013. I was preparing other things and
+working on other projects. During this period, I received several bug reports
+related to <a href="http://github.com/uniqush/uniqush-push">uniqush-push</a>. Some of them indicating some large service is
+currently using …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-push-1-5-2.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-push-1-5-1.html"><h2>Release 1.5.1</h2></a>
+        <div class= "well small"> Sat 09 November 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>This version contains several minor bug fixes and improvements. Details can be
+found in the <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-1.html">release note</a>. Two noticeable changes are:</p>
+<ul>
+<li>Subscriber and service names can contain <code>@</code> now.</li>
+<li><code>content-available</code> parameter is supported in APNS.</li>
+</ul> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-push-1-5-1.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-push-1-5-0.html"><h2>Release 1.5.0: Kindle Support</h2></a>
+        <div class= "well small"> Sun 01 September 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>I'm very glad to announce that <a href="http://uniqush.org">uniqush</a> supports <a href="https://developer.amazon.com/sdk/adm.html">ADM</a> since version 1.5.0,
+which means users can use it to push notifications to Amazon Kindle Tablets.</p>
+<p>This is the only change in this version and since it changed the user
+interface, it is considered as a big change. (That's …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-push-1-5-0.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-push-1-4-5.html"><h2>Release 1.4.5</h2></a>
+        <div class= "well small"> Thu 01 August 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>This version contains only one bug fix. Since this bug is critical, it is
+highly recommended to upgrade to this version.</p>
+<p>Thanks for <a href="https://github.com/cmabastar-gumi">cmabastar-gumi</a>'s bug report again. For more details, please check
+out our <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-5.html">release note</a>.</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-push-1-4-5.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-push-1-4-4.html"><h2>Release 1.4.4</h2></a>
+        <div class= "well small"> Sat 20 July 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>This version contains some minor bug fixes and a <em>huge</em> improvement for APNS. I
+would like to give special thanks to <a href="https://github.com/cmabastar-gumi">cmabastar-gumi</a> for his detailed bug
+reports. Please check the <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-4.html">release note</a> for detailed ChangeLog.</p>
+<p>In this post, I will explain more about how I improved the performance for
+APNS …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-push-1-4-4.html">read more</a></div>
+    </div>	
+				
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://blog.uniqush.org/tag/release-note.html">1</a></li>
+    <li class=""><a href="http://blog.uniqush.org/tag/release-note2.html">2</a></li>
+
+    <li class="next"><a href="http://blog.uniqush.org/tag/release-note2.html">Next &rarr;</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2016</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

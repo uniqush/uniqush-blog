@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Uniqush Blog - misc</title><link href="http://blog.uniqush.org/" rel="alternate"></link><link href="http://blog.uniqush.org/feeds/misc.atom.xml" rel="self"></link><id>http://blog.uniqush.org/</id><updated>2012-07-31T00:00:00+02:00</updated><entry><title>Big changes are coming soon</title><link href="http://blog.uniqush.org/update-2012-07-31.html" rel="alternate"></link><published>2012-07-31T00:00:00+02:00</published><updated>2012-07-31T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-07-31:/update-2012-07-31.html</id><summary type="html">&lt;p&gt;Given the plan in &lt;a href="http://blog.uniqush.org/uniqush-after-go1.html"&gt;uniqush after go1&lt;/a&gt;, some changes, which may be considered as big changes, will be made in the coming August.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A new static website for &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt;. Yes, no more &lt;a href="http://trac.edgewall.org/"&gt;trac&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A new &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; on github is created. All &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; related code will be moved under …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Given the plan in &lt;a href="http://blog.uniqush.org/uniqush-after-go1.html"&gt;uniqush after go1&lt;/a&gt;, some changes, which may be considered as big changes, will be made in the coming August.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A new static website for &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt;. Yes, no more &lt;a href="http://trac.edgewall.org/"&gt;trac&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A new &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; on github is created. All &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; related code will be moved under &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;. It is more than welcome to join it.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; will provide binary packages for 64-bit GNU/Linux systems, including .deb package, .rpm package and .tar.gz package (which can be used on all 64-bit GNU/Linux systems). It is &lt;strong&gt;highly&lt;/strong&gt; recommended to install &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; system from those packages. No more &lt;em&gt;go get&lt;/em&gt; (but you can still use &lt;em&gt;go get&lt;/em&gt; anyway if you like).&lt;/li&gt;
+&lt;li&gt;Last but not least, the release of &lt;em&gt;uniqush-conn&lt;/em&gt; and other stuff will be postponed (sorry about that). Hopefully, I could make it before Feb. 2013. Watch the repositories on &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; for more updates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here are some details about these updates.&lt;/p&gt;
+&lt;h3&gt;Home page will be static&lt;/h3&gt;
+&lt;p&gt;Check out our &lt;a href="http://github.com/uniqush/uniqush-www/"&gt;uniqush-www&lt;/a&gt; repository, the whole website will be there. It is a static website created by &lt;a href="http://webgen.rubyforge.org/"&gt;webgen&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Reason:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I found some spam using &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;'s &lt;a href="http://uniqush.org/report"&gt;ticket&lt;/a&gt; even if I have already added CAPTCHA plugin, which is very annoying.&lt;/li&gt;
+&lt;li&gt;I don't quite like to backup databases for wiki pages on &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;, although it is done automatically by two cron jobs running on &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt; and a small Arm server in my home. Recovery the whole website from scratch is still hard even if I have all content on my hand (import data to database, setup &lt;a href="http://trac.edgewall.org/"&gt;trac&lt;/a&gt; and its plugins again, etc.)&lt;/li&gt;
+&lt;li&gt;If I use &lt;a href="http://webgen.rubyforge.org/"&gt;webgen&lt;/a&gt; based static pages, I can easily change the look of the website by changing the template.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The website will be replaced once I migrated all pages on &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt;. So please expecting the outage of &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt; for one or two days. In the meantime, you can still access our source code from &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Uniqush organization on github&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; is meant to cover most development-related operations on uniqush system --- including &lt;em&gt;uniqush-conn&lt;/em&gt;, &lt;em&gt;uniqush-push&lt;/em&gt;,  &lt;em&gt;uniqush-client&lt;/em&gt; and their issue tracks. This job could be done better by using an individual organization account, rather than a personal account. Moreover, considering there are already some people contacted me saying they are interested to join the &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; system development team, an organization is the best fit for such team work in the future.&lt;/p&gt;
+&lt;p&gt;However, because we will migrate source code to &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;, programs, if any, using code from uniqush-push should be aware of the changed url.&lt;/p&gt;
+&lt;h3&gt;Binary packages&lt;/h3&gt;
+&lt;p&gt;One of the beautiful parts of &lt;a href="http://golang.org"&gt;Go programming language&lt;/a&gt; is: it deliberately does not support shared library or dynamic library. That means the program written in &lt;a href="http://golang.org"&gt;Go programming language&lt;/a&gt; is &lt;strong&gt;self-contained&lt;/strong&gt;, i.e. one executable, no dependencies (in the sense of library, not external program). Once the program is produced from compiler, you can copy it around and it can be &lt;strong&gt;always&lt;/strong&gt; run regardless what ever the libraries you have installed on the machine.&lt;/p&gt;
+&lt;p&gt;This makes me very easy to produce binary packages, which should be a necessary part for an free/open-source project.&lt;/p&gt;
+&lt;p&gt;Right now, all packages are produced and will be on-line after replacing the website with static pages.&lt;/p&gt;
+&lt;h3&gt;&lt;em&gt;uniqush-conn&lt;/em&gt;, and other stuff&lt;/h3&gt;
+&lt;p&gt;I have to appologize for the delay. I over-estimated my ability and under-estimated the workload I am facing right now. However, the good thing is: I have a more concrete design on the whole system.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;uniqush-conn&lt;/em&gt;, as always, will be written in &lt;a href="http://golang.org"&gt;Go programming language&lt;/a&gt;. The core part of &lt;em&gt;uniqush-client&lt;/em&gt; will be written in C for portability and performance consideration. There will be several derived work on &lt;em&gt;uniqush-client&lt;/em&gt; to support different platforms including Android, iOS. This means the core part of mobile library is written in native C language, which, as you can expect, will be and should be fast.&lt;/p&gt;
+&lt;h3&gt;Misc&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;uniqush-push&lt;/em&gt; will support wildcast when you push some notification to subscribers. For example, you can name your subscriber as group1.sub1, group1.sub2, group1.sub3, etc. Then you can say "push message to group1.*" and the message will be push to all subscribers whose name starting from group1..&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;uniqush-push&lt;/em&gt; will support true multicast. Because &lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt; introduced multicast, we need to support it in native way.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All features above will be included in the next release, verion 1.3.1&lt;/p&gt;</content><category term="plan"></category></entry><entry><title>Hello World! Hello Uniqush!</title><link href="http://blog.uniqush.org/hello-world.html" rel="alternate"></link><published>2012-03-02T00:00:00+01:00</published><updated>2012-03-02T00:00:00+01:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-03-02:/hello-world.html</id><summary type="html">&lt;p&gt;I started &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; in Aug. 2011, when I was reading
+documents about push service. The idea of this project is simple: build a
+software as a proxy between the app server and push services, so that the
+server side programmer could use a simple and consistent interface to push
+message …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I started &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; in Aug. 2011, when I was reading
+documents about push service. The idea of this project is simple: build a
+software as a proxy between the app server and push services, so that the
+server side programmer could use a simple and consistent interface to push
+message to any mobile device.&lt;/p&gt;
+&lt;p&gt;After about one month of development, the first functional version was online
+and also the &lt;a href="http://uniqush.org"&gt;web site&lt;/a&gt;. Once it becomes a free/open-source
+software project, it is more than coding work. Maintaining such a project is
+&lt;a href="http://antirez.com/post/one-year-of-redis.html"&gt;not a trivial work&lt;/a&gt; even for
+experienced developers. Although I did not widely announce the birth of
+uniqush, I did make my best effort to build a bridge between my project and my
+(potential) users. That is why I spend lots of time on &lt;a href="http://uniqush.org/wiki/UniqushStory"&gt;drawing
+work&lt;/a&gt;, and hence this blog.&lt;/p&gt;
+&lt;p&gt;Interaction with users are crucial to a software project. Although
+&lt;a href="http://github.com/monnand/uniqush"&gt;github&lt;/a&gt; provides plenty of means for such
+purpose, a blog may be a simple and effective way to make announcement and get
+feedback immediately.&lt;/p&gt;
+&lt;p&gt;Hence, I set up this blog hoping to hear the voice from the early or potential
+users of uniqush. If you have any comment on this project, please let me know.&lt;/p&gt;</content><category term="uniqush"></category><category term="golang"></category></entry></feed>

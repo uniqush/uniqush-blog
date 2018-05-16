@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - uniqush-push</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://blog.uniqush.org/wildcard.html"><h1>New Feature: push with wildcard</h1></a>
+Fri 10 August 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>NOTE: This feature is included in version 1.3.1 and later. Please check out our latest release from the <a href="http://uniqush.org/downloads.html">download page</a>.</p>
+<p>I would like to announce a new feature in uniqush-push: wildcard. More precisely, the asterisk sign (*).</p>
+<p>Just like wildcard in UNIX system, you can use asterisk sign (*) to match zero or more characters to specify more than one subscribers.</p>
+<p>Here is an example (again, I use curl to demonstrate. Of course, you can use any language with HTTP library to communicate with uniqush-push):</p>
+<div class="highlight"><pre><span></span>curl http://127.0.0.1:9898/push -d service=myservice -d subscriber=uniqush.* -d msg=”Hello World”
+</pre></div>
+
+
+<p>This command will push a notification to any subscriber whose name starts with "uniqush."</p>
+<p>And of course, if you like, you can use this feature to push message to <em>all</em> subscribers:</p>
+<div class="highlight"><pre><span></span>curl http://127.0.0.1:9898/push -d service=myservice -d subscriber=* -d msg=”Hello World”
+</pre></div>
+
+
+<p>This is a very useful feature if you want to classify your subscribers in groups. For example, I have two groups, namely group1 and group2. We can have a naming convention, say all subscribers under group1 should have names start with "group1.". If we want to send a message to all subscribers in group1, we can simply say, send it to group1.*. It's very easy and convenient.</p>
+<p>One side effect brought by this feature is a more strict naming rule for services and subscribers. Any service/subscriber's name should only contain: 26 English letters (a-z and A-Z), numbers(0-9), dash (-), underscore (_), dot (.). In short, it should match this regular expression: <code>^[a-zA-Z0-9-\_\\.]+$</code>. Any other character should not be used in service/subscriber's name.</p>
+<p>NOTE: Asterisk sign (*) is the only wildcard we support right now. I see no reason to support more wildcards at this time (like ?, [], etc.). If you have any comment/suggestion, it would be more than welcome.</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/update-2012-05-08.html"><h2>Recent update on uniqush-push</h2></a>
+        <div class= "well small"> Tue 08 May 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>As I mentioned in <a href="http://blog.uniqush.org/uniqush-after-go1.html">uniqush after Go 1</a>, <em>uniqushd</em> is now renamed to <em>uniqush-push</em>. However, it is more than a renaming work. I will review some changes on <em>uniqush-push</em> in this blog post.</p>
+<h3>HTTP responds more information</h3>
+<p>Users communicated with <em>uniqushd</em> through HTTP. Whenever a request was received, <em>uniqushd</em> would …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/update-2012-05-08.html">read more</a></div>
+    </div>	
+				
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://blog.uniqush.org/tag/uniqush-push.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - plan</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://blog.uniqush.org/uniqush-after-go1.html"><h1>Uniqush after Go 1</h1></a>
+Wed 28 March 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>Today, March 28th 2012, is a big day for every gopher: Go team
+<a href="http://blog.golang.org/2012/03/go-version-1-is-released.html">released Go version 1</a>. This
+means Go -- both the language itself and its standard library -- is
+stable now. Because of this, I think it's time to move
+<a href="http://uniqush.org">uniqush</a> onto next stage. I would like to share
+the blueprint of <a href="http://uniqush.org">uniqush</a> in this article.</p>
+<p><strong>Instead of simply providing push service,
+<a href="http://uniqush.org">uniqush</a> will try to provide communication
+facilities for mobile developers, including both server-side
+developers and mobile-side developers.</strong> This change will make the
+current work of <a href="http://uniqush.org">uniqush</a>, which only has one
+single program -- <em>uniqushd</em>, become a (relatively small) part of the
+whole uniqush project.</p>
+<p>In the future, the uniqush project will mainly consists of four
+parts: <em>uniqush-push</em>, <em>uniqush-conn</em>, <em>uniqush-front</em> and <em>uniqush-mobile-libs</em>. I would
+explain each of them in the following sections.</p>
+<h3>uniqushd becomes uniqush-push (done)</h3>
+<p>Currently, uniqushd is the only program we provide in uniqush
+project. The function of this program is to behave as a proxy between
+third party server and push service cloud (C2DM, APNs, etc.) so that
+the third party server can push messages to many platforms (Android,
+iOS) in a consistent syntax without knowing protocols on different
+clouds.</p>
+<p>In the future, <em>uniqushd</em> will be renamed to <em>uniqush-push</em> because it
+actually only deals with push service. It will support more platforms
+(Windows Phone, Black Berry, etc.), but there is no more functions
+added to this program. It only focuses on one single task: push a
+message through different clouds.</p>
+<h3>uniqush-conn handles connections between server and apps</h3>
+<p>When I say <em>server</em>, I mean an entity that may consists of more than
+one node. This means it may be a cloud, a cluster, more precisely, or
+even a datacenter. (OK. it may be, if they want, several datacenters.)</p>
+<p>Imagine you have an app, let's say an online chat app, needs to
+connect your server directly once it is active. You may define
+the word <em>active</em> under your context. In most cases, it is when the
+app is in front, i.e. user is using the app on his phone now. If the
+server sends a message to the app now, the server may want to use this
+direct connection instead of push service cloud to send this message.</p>
+<p>In an example of online chat app, user A sends a message to
+user B. User A first start his app on the phone. The app then connects to
+the server saying "I'm A and am online now". From now on, the
+app on user A's phone is active and a connection between the app
+ and the server is established. User A wants to chat
+with B. He types in some message, click send button and the message is
+sent to the server through the newly established connection. The
+server unpacks the message seeing it is a message for B. It checks
+whether B is online/active now. If B is online, then there's a
+connection between the server and B, the server can send the message
+through this connection. If B is not, then the server will send some
+message, saying "Hey, B, you got a message from A, check it!" through
+push service clouds (C2DM, APNs, etc.).</p>
+<p>If the server in the previous example is using facilities from
+uniqush, then it may use <em>uniqush-push</em> to send message through push
+service clouds, and use <em>uniqush-conn</em> to deal with active connections
+between the server and apps.</p>
+<p>In fact, the server does not even need to know if a certain user is
+online or not. <em>uniqush-conn</em> can deal with it and decide whether send
+message through a direct connection, or through <em>uniqush-push</em>.</p>
+<p>Now we can see the benefit. As a server-side developer, you only need
+to send a message to <em>uniqush-conn</em>, and say "Send this message to
+user B". Then you are done. What if the user B was offline? Well,
+<em>uniqush-conn</em> could then automatically tell <em>uniqush-push</em> to push a
+notification to user B. If the message if too big to be fit into a
+notification, <em>uniqush-conn</em> will send a notification to user B,
+saying ``You got a message'', keep a temporary copy of that message
+and send the message to user B once it's online. The server even does
+not know the existence of <em>uniqush-push</em>.</p>
+<h3>uniqush-front handles scale-out growth</h3>
+<p>As I mentioned, <em>server</em> side may consists of more than one
+node. With the increasing of number of connections, growing in a
+scale-out way should be a concern for server developers. We introduce
+<em>uniqush-front</em> to handle connections distributed among several
+instances of <em>uniqush-conn</em> in more than one nodes (or cloud
+instances). The server-side program will finally only communicate with
+<em>uniqush-front</em> without knowing which instance of <em>uniqush-conn</em>
+handles which connection. The protocol between server and
+<em>uniqush-front</em> will be exactly the same as the protocol between
+server and <em>uniqush-conn</em>. So that changing from <em>uniqush-conn</em> to
+<em>uniqush-front</em> will not lead to change of code.</p>
+<p>Suppose the server side has 10 nodes. Each node runs an instance of
+<em>uniqush-conn</em>. A certain user may connect one of the instance on some
+node. The server side program only need to tell <em>uniqush-front</em> what
+message needs to be sent to which user. Then <em>uniqush-front</em> will
+figure out which instance of <em>uniqush-conn</em> should be use. Adding more
+node will not be a pain because the server side program won't be
+changed.</p>
+<h3>uniqush-mobile-libs helps app developers</h3>
+<p><em>uniqush-conn</em> keeps connections between apps and the server. It also
+ sends messages, commands to apps. The app developers do not need to
+ know details about how to communicate with
+ <em>uniqush-conn</em>. <em>uniqush-mobile-libs</em> will contain libraries for
+ popular mobile platforms so that app developers can use it to
+ communicate with <em>uniqush-conn</em>, hence with the server side program.</p>
+<h3>When?</h3>
+<p><em>uniqush-push</em> is already there. I only need to change its name from
+ <em>uniqushd</em> to <em>uniqush-push</em>. I will start developing <em>uniqush-conn</em>
+in this week and (hopefully) <em>uniqush-conn</em> and <em>uniqush-mobile-libs</em>
+will be released before Sep. 2012.</p>
+<p>I wish I can make it faster. But sorry for disappointing you, it seems
+impossible for me: there is only one developer in this project, and
+yes, I am the developer. If you are interested in this project and
+want to make your own contribution, please feel free to contact me.</p>
+<h3>Update</h3>
+<p>As I mentioned, <em>uniqush-push</em> is online now. It is more than a
+renaming work. All related documents are changed respectively. If you
+find any inconsistence between the document and the code, please let
+me know. Thank you very much.</p></div>
+        <hr />
+    </div>
+		
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://blog.uniqush.org/category/plan.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2012</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

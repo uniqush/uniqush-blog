@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - Recent update on uniqush-push</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+    <div class='article'>
+        <div class="content-title">
+            <h1>Recent update on uniqush-push</h1>
+Tue 08 May 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+        </div>
+	
+        <div><p>As I mentioned in <a href="http://blog.uniqush.org/uniqush-after-go1.html">uniqush after Go 1</a>, <em>uniqushd</em> is now renamed to <em>uniqush-push</em>. However, it is more than a renaming work. I will review some changes on <em>uniqush-push</em> in this blog post.</p>
+<h3>HTTP responds more information</h3>
+<p>Users communicated with <em>uniqushd</em> through HTTP. Whenever a request was received, <em>uniqushd</em> would reply an HTTP response containing only one line: <em>id=xxxxx</em>. It is the request ID which helps users check the status in log. There was no other information responds from <em>uniqushd</em>. Users have to check log to see if a push was successfully sent to the cloud.</p>
+<p><em>uniqush-push</em> now uses HTTP as communicating protocol as well, but provide more information inside the HTTP response. On adding push service provider or subscribing a service, it responds the service provider's ID or delivery point's ID respectively. On push, it responds <em>Success!</em> on, well..., success. On failure, it responds the reason. But there is one exception: on retry, which usually happens on some temporary failure, it only respond <em>Retry</em> and users have to check log to see if the message is successfully delivered.</p>
+<h3>Fixed a bug</h3>
+<p>Thank <a href="http://twitter.com/M_Cainelli">@M_Cainelli</a> for his <a href="https://twitter.com/#!/M_Cainelli/status/199917700305268737">bug report</a>.</p>
+<p>Description of this bug: send subscribe command to <em>uniqush-push</em> several times with same delivery point under same subscriber, push a message to the subscriber, there will be multiple messages pushed to the delivery point.</p>
+<p>This is because of the cache mechanism in front of database. On adding a delivery point to a subscriber in the cache, we forget to check if the delivery point is already under the subscriber. This will then cause the multiple time of delivery.</p>
+<h3>Future</h3>
+<p>Besides, we have re-arranged the namespace preparing the comming of <em>uniqush-conn</em>. I am busy on designing the protocol between <em>uniqush-conn</em> and client. Hopefully, we could release <em>uniqush-conn</em> on time.</p></div>
+	
+        <hr>
+
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="Recent update on uniqush-push" data-via="uniqush">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+        <h2>Comments</h2>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'uniqushblog'; 
+    var disqus_title = 'Recent update on uniqush-push';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2016</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>

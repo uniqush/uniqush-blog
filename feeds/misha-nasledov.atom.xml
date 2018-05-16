@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Uniqush Blog - Misha Nasledov</title><link href="http://blog.uniqush.org/" rel="alternate"></link><link href="http://blog.uniqush.org/feeds/misha-nasledov.atom.xml" rel="self"></link><id>http://blog.uniqush.org/</id><updated>2016-05-11T00:00:00+02:00</updated><entry><title>if(we) blogs about Uniqush</title><link href="http://blog.uniqush.org/ifwe-blog-post.html" rel="alternate"></link><published>2016-05-11T00:00:00+02:00</published><updated>2016-05-11T00:00:00+02:00</updated><author><name>Misha Nasledov</name></author><id>tag:blog.uniqush.org,2016-05-11:/ifwe-blog-post.html</id><summary type="html">&lt;p&gt;Misha Nasledov, Lead Platform Engineer at &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt;, writes about using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt; at scale. &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt; sends tens of millions of push notifications every day using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt;. Check out his &lt;a href="http://www.ifwe.co/code/posts/how-we-solved-push-notifications-at-ifwe/"&gt;blog post&lt;/a&gt;!&lt;/p&gt;</summary><content type="html">&lt;p&gt;Misha Nasledov, Lead Platform Engineer at &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt;, writes about using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt; at scale. &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt; sends tens of millions of push notifications every day using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt;. Check out his &lt;a href="http://www.ifwe.co/code/posts/how-we-solved-push-notifications-at-ifwe/"&gt;blog post&lt;/a&gt;!&lt;/p&gt;</content><category term="news"></category></entry><entry><title>Release 2.1.0</title><link href="http://blog.uniqush.org/uniqush-push-2-1-0.html" rel="alternate"></link><published>2016-03-09T00:00:00+01:00</published><updated>2016-03-09T00:00:00+01:00</updated><author><name>Misha Nasledov</name></author><id>tag:blog.uniqush.org,2016-03-09:/uniqush-push-2-1-0.html</id><summary type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-1-0.html"&gt;release notes&lt;/a&gt; for version 2.1.0.&lt;/p&gt;
+&lt;p&gt;New APIs have been added: one for listing the subscriptions of a subscriber and
+another for showing the configurations of the push service providers for services that
+exist.&lt;/p&gt;
+&lt;p&gt;Concurrency issues in ADM and APNS have been fixed. The APNS …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-1-0.html"&gt;release notes&lt;/a&gt; for version 2.1.0.&lt;/p&gt;
+&lt;p&gt;New APIs have been added: one for listing the subscriptions of a subscriber and
+another for showing the configurations of the push service providers for services that
+exist.&lt;/p&gt;
+&lt;p&gt;Concurrency issues in ADM and APNS have been fixed. The APNS implementation
+has been changed to use a new, reliable worker pool implementation.&lt;/p&gt;
+&lt;p&gt;This implementation has been running reliably at production scale, at a company named
+&lt;em&gt;if(we)&lt;/em&gt;, sending push notifications for the Tagged and hi5 social networks
+for a while now (nearly a year at time of writing).
+The company has 12 processes handling a peak of 60 APNS push notifications per second,
+and the tier is overprovisioned in order to be able to deal with
+traffic increases and potential surges. That's about 5 APNS push notifications
+per process per second. In addition, &lt;em&gt;if(we)&lt;/em&gt; sends about 270 GCM push notifications
+per second distributed amongst these same processes, which adds about another
+22 GCM push notifications per second each process sends. The subscribe API
+on the tier ends up getting hit about 500 times per second (about 42 queries
+per process per second). So, each process is handling about 70 queries a second
+easily. &lt;em&gt;if(we)&lt;/em&gt; has been running without any issues for many months, especially after
+fixing some bugs that eventually manifested only at their scale.&lt;/p&gt;
+&lt;p&gt;A bug which could lead to infinite loops in rare circumstances has been fixed.&lt;/p&gt;
+&lt;p&gt;The APNS implementation no longer uses Go's default HTML escaping of JSON
+payloads. The APNS servers now render payloads with characters such as '"'
+properly.&lt;/p&gt;
+&lt;p&gt;More details have been added to error messages so that problems can be
+debugged more easily.&lt;/p&gt;
+&lt;p&gt;The APNS implementation has also been updated to deal with 100-byte APNS
+device tokens (previously 32-bytes) which Apple said it would roll out in 2016.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 2.0.0</title><link href="http://blog.uniqush.org/uniqush-push-2-0-0.html" rel="alternate"></link><published>2016-03-08T00:00:00+01:00</published><updated>2016-03-08T00:00:00+01:00</updated><author><name>Misha Nasledov</name></author><id>tag:blog.uniqush.org,2016-03-08:/uniqush-push-2-0-0.html</id><summary type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-0-0.html"&gt;release notes&lt;/a&gt; for version 2.0.0.&lt;/p&gt;
+&lt;p&gt;We've improved the response format of most APIs. Instead of sending server logs
+back, they now return JSON response objects. This makes it easy to distinguish
+successes from failures. For example, when sending push notifications to a subscriber with …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-0-0.html"&gt;release notes&lt;/a&gt; for version 2.0.0.&lt;/p&gt;
+&lt;p&gt;We've improved the response format of most APIs. Instead of sending server logs
+back, they now return JSON response objects. This makes it easy to distinguish
+successes from failures. For example, when sending push notifications to a subscriber with
+multiple delivery points, some may fail, but others may succeed. The JSON response object
+for a push contains easily parseable information on the status of each delivery point.&lt;/p&gt;
+&lt;p&gt;The APNS module has been updated to support the new 2048 byte (2kB) limit.&lt;/p&gt;
+&lt;p&gt;There are a few bugfixes, fixing both memory leaks and improperly closed connections.&lt;/p&gt;
+&lt;p&gt;This version officially removes C2DM support entirely, as C2DM was shut down by
+Google on October 2015.&lt;/p&gt;
+&lt;p&gt;The released binaries are built with Go 1.6. Compilation with Go 1.6 (or
+whatever the newest version may be) is recommended as the service will have
+lower CPU usage compared to builds using older versions of Go.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry></feed>

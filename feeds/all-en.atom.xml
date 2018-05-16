@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Uniqush Blog</title><link href="http://blog.uniqush.org/" rel="alternate"></link><link href="http://blog.uniqush.org/feeds/all-en.atom.xml" rel="self"></link><id>http://blog.uniqush.org/</id><updated>2016-05-11T00:00:00+02:00</updated><entry><title>if(we) blogs about Uniqush</title><link href="http://blog.uniqush.org/ifwe-blog-post.html" rel="alternate"></link><published>2016-05-11T00:00:00+02:00</published><updated>2016-05-11T00:00:00+02:00</updated><author><name>Misha Nasledov</name></author><id>tag:blog.uniqush.org,2016-05-11:/ifwe-blog-post.html</id><summary type="html">&lt;p&gt;Misha Nasledov, Lead Platform Engineer at &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt;, writes about using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt; at scale. &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt; sends tens of millions of push notifications every day using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt;. Check out his &lt;a href="http://www.ifwe.co/code/posts/how-we-solved-push-notifications-at-ifwe/"&gt;blog post&lt;/a&gt;!&lt;/p&gt;</summary><content type="html">&lt;p&gt;Misha Nasledov, Lead Platform Engineer at &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt;, writes about using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt; at scale. &lt;a href="http://www.ifwe.co/"&gt;if(we)&lt;/a&gt; sends tens of millions of push notifications every day using &lt;a href="http://github.com/uniqush/uniqush-push"&gt;Uniqush&lt;/a&gt;. Check out his &lt;a href="http://www.ifwe.co/code/posts/how-we-solved-push-notifications-at-ifwe/"&gt;blog post&lt;/a&gt;!&lt;/p&gt;</content><category term="news"></category></entry><entry><title>Release 2.1.0</title><link href="http://blog.uniqush.org/uniqush-push-2-1-0.html" rel="alternate"></link><published>2016-03-09T00:00:00+01:00</published><updated>2016-03-09T00:00:00+01:00</updated><author><name>Misha Nasledov</name></author><id>tag:blog.uniqush.org,2016-03-09:/uniqush-push-2-1-0.html</id><summary type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-1-0.html"&gt;release notes&lt;/a&gt; for version 2.1.0.&lt;/p&gt;
+&lt;p&gt;New APIs have been added: one for listing the subscriptions of a subscriber and
+another for showing the configurations of the push service providers for services that
+exist.&lt;/p&gt;
+&lt;p&gt;Concurrency issues in ADM and APNS have been fixed. The APNS …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-1-0.html"&gt;release notes&lt;/a&gt; for version 2.1.0.&lt;/p&gt;
+&lt;p&gt;New APIs have been added: one for listing the subscriptions of a subscriber and
+another for showing the configurations of the push service providers for services that
+exist.&lt;/p&gt;
+&lt;p&gt;Concurrency issues in ADM and APNS have been fixed. The APNS implementation
+has been changed to use a new, reliable worker pool implementation.&lt;/p&gt;
+&lt;p&gt;This implementation has been running reliably at production scale, at a company named
+&lt;em&gt;if(we)&lt;/em&gt;, sending push notifications for the Tagged and hi5 social networks
+for a while now (nearly a year at time of writing).
+The company has 12 processes handling a peak of 60 APNS push notifications per second,
+and the tier is overprovisioned in order to be able to deal with
+traffic increases and potential surges. That's about 5 APNS push notifications
+per process per second. In addition, &lt;em&gt;if(we)&lt;/em&gt; sends about 270 GCM push notifications
+per second distributed amongst these same processes, which adds about another
+22 GCM push notifications per second each process sends. The subscribe API
+on the tier ends up getting hit about 500 times per second (about 42 queries
+per process per second). So, each process is handling about 70 queries a second
+easily. &lt;em&gt;if(we)&lt;/em&gt; has been running without any issues for many months, especially after
+fixing some bugs that eventually manifested only at their scale.&lt;/p&gt;
+&lt;p&gt;A bug which could lead to infinite loops in rare circumstances has been fixed.&lt;/p&gt;
+&lt;p&gt;The APNS implementation no longer uses Go's default HTML escaping of JSON
+payloads. The APNS servers now render payloads with characters such as '"'
+properly.&lt;/p&gt;
+&lt;p&gt;More details have been added to error messages so that problems can be
+debugged more easily.&lt;/p&gt;
+&lt;p&gt;The APNS implementation has also been updated to deal with 100-byte APNS
+device tokens (previously 32-bytes) which Apple said it would roll out in 2016.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 2.0.0</title><link href="http://blog.uniqush.org/uniqush-push-2-0-0.html" rel="alternate"></link><published>2016-03-08T00:00:00+01:00</published><updated>2016-03-08T00:00:00+01:00</updated><author><name>Misha Nasledov</name></author><id>tag:blog.uniqush.org,2016-03-08:/uniqush-push-2-0-0.html</id><summary type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-0-0.html"&gt;release notes&lt;/a&gt; for version 2.0.0.&lt;/p&gt;
+&lt;p&gt;We've improved the response format of most APIs. Instead of sending server logs
+back, they now return JSON response objects. This makes it easy to distinguish
+successes from failures. For example, when sending push notifications to a subscriber with …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Please check out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-2-0-0.html"&gt;release notes&lt;/a&gt; for version 2.0.0.&lt;/p&gt;
+&lt;p&gt;We've improved the response format of most APIs. Instead of sending server logs
+back, they now return JSON response objects. This makes it easy to distinguish
+successes from failures. For example, when sending push notifications to a subscriber with
+multiple delivery points, some may fail, but others may succeed. The JSON response object
+for a push contains easily parseable information on the status of each delivery point.&lt;/p&gt;
+&lt;p&gt;The APNS module has been updated to support the new 2048 byte (2kB) limit.&lt;/p&gt;
+&lt;p&gt;There are a few bugfixes, fixing both memory leaks and improperly closed connections.&lt;/p&gt;
+&lt;p&gt;This version officially removes C2DM support entirely, as C2DM was shut down by
+Google on October 2015.&lt;/p&gt;
+&lt;p&gt;The released binaries are built with Go 1.6. Compilation with Go 1.6 (or
+whatever the newest version may be) is recommended as the service will have
+lower CPU usage compared to builds using older versions of Go.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 1.5.2</title><link href="http://blog.uniqush.org/uniqush-push-1-5-2.html" rel="alternate"></link><published>2014-06-29T00:00:00+02:00</published><updated>2014-06-29T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2014-06-29:/uniqush-push-1-5-2.html</id><summary type="html">&lt;p&gt;&lt;em&gt;TL;DR&lt;/em&gt;: Please checkout our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-2.html"&gt;release note&lt;/a&gt; for version 1.5.2.&lt;/p&gt;
+&lt;p&gt;Sorry for my absence since November 2013. I was preparing other things and
+working on other projects. During this period, I received several bug reports
+related to &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt;. Some of them indicating some large service is
+currently using …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;em&gt;TL;DR&lt;/em&gt;: Please checkout our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-2.html"&gt;release note&lt;/a&gt; for version 1.5.2.&lt;/p&gt;
+&lt;p&gt;Sorry for my absence since November 2013. I was preparing other things and
+working on other projects. During this period, I received several bug reports
+related to &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt;. Some of them indicating some large service is
+currently using uniqush-push as their backend push service, while some of them
+contains very weird log messages which I did not expect. It is really exciting
+for me to see &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt; working on top of user base with millions of
+users. But it is so disappointed that I was not able to quickly found the root
+cause of all bugs.&lt;/p&gt;
+&lt;p&gt;Fortunately, it seems that most bugs are related to the APNS' waiting time
+calculation. When a push operation failed, &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt; will wait for some
+time before retry. It will announce a failure after 3 attempts. The waiting
+time is increased for each attempt. The way we used to calculate the waiting
+time was to square the previous waiting time. The problem is that we represent
+time period in terms of nanoseconds. Squaring it quickly leads to an integer
+overflow. This is why lots of logs in bug reports contains some negative
+waiting times.&lt;/p&gt;
+&lt;p&gt;There's also a potential problem with deterministic waiting times: It may leads
+to message storm. Imagine you want to send one million message at same time and
+some of them will fail. Because all of the failed messages will be resent after
+the same period, it leads to another spike of network usage, which may lead to
+failure as well. An easy fix is to wait for a random amount of time.&lt;/p&gt;
+&lt;p&gt;In 1.5.2, &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt; will randomly increase the waiting time before every
+resend of a message. This should fix most bug report I received. But I did not
+confirmed this with every reporter yet. If you have any other issues with the
+most recent version, please &lt;a href="https://github.com/uniqush/uniqush-push/issues/new"&gt;report a
+bug&lt;/a&gt;.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 1.5.1</title><link href="http://blog.uniqush.org/uniqush-push-1-5-1.html" rel="alternate"></link><published>2013-11-09T00:00:00+01:00</published><updated>2013-11-09T00:00:00+01:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-11-09:/uniqush-push-1-5-1.html</id><summary type="html">&lt;p&gt;This version contains several minor bug fixes and improvements. Details can be
+found in the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-1.html"&gt;release note&lt;/a&gt;. Two noticeable changes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Subscriber and service names can contain &lt;code&gt;@&lt;/code&gt; now.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;content-available&lt;/code&gt; parameter is supported in APNS.&lt;/li&gt;
+&lt;/ul&gt;</summary><content type="html">&lt;p&gt;This version contains several minor bug fixes and improvements. Details can be
+found in the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-1.html"&gt;release note&lt;/a&gt;. Two noticeable changes are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Subscriber and service names can contain &lt;code&gt;@&lt;/code&gt; now.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;content-available&lt;/code&gt; parameter is supported in APNS.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 1.5.0: Kindle Support</title><link href="http://blog.uniqush.org/uniqush-push-1-5-0.html" rel="alternate"></link><published>2013-09-01T00:00:00+02:00</published><updated>2013-09-01T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-09-01:/uniqush-push-1-5-0.html</id><summary type="html">&lt;p&gt;I'm very glad to announce that &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; supports &lt;a href="https://developer.amazon.com/sdk/adm.html"&gt;ADM&lt;/a&gt; since version 1.5.0,
+which means users can use it to push notifications to Amazon Kindle Tablets.&lt;/p&gt;
+&lt;p&gt;This is the only change in this version and since it changed the user
+interface, it is considered as a big change. (That's …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm very glad to announce that &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; supports &lt;a href="https://developer.amazon.com/sdk/adm.html"&gt;ADM&lt;/a&gt; since version 1.5.0,
+which means users can use it to push notifications to Amazon Kindle Tablets.&lt;/p&gt;
+&lt;p&gt;This is the only change in this version and since it changed the user
+interface, it is considered as a big change. (That's why we are no longer in
+version 1.4.x). As always, here's the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-5-0.html"&gt;release note&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to share more details and plans in this post.&lt;/p&gt;
+&lt;h3&gt;Kindle was a pain&lt;/h3&gt;
+&lt;p&gt;When I first released &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;, supporting Android and iOS is a very natural
+choice. They are popular and share the major market. I considered to support
+Windows phone soon, but because of lacking of device and environment (I use
+GNU/Linux only and do not have a copy of Visual Studio), &lt;a href="https://github.com/uniqush/uniqush-push/issues/4"&gt;this
+issue&lt;/a&gt; is now marked as
+"HelpWanted". It is wonderful if we support windows. But lack of windows
+phone support won't hurt us much.&lt;/p&gt;
+&lt;p&gt;Kindle, on the other hand, is an exception. It is an android device but Amazon
+chooses not to add &lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt; support. Moreover, it has a relatively large user
+group making it hard to be ignored. Amazon introduced &lt;a href="https://developer.amazon.com/sdk/adm.html"&gt;ADM&lt;/a&gt; in Dec 2012 making
+yet another cloud service for developers to push notifications.&lt;/p&gt;
+&lt;p&gt;The release of &lt;a href="https://developer.amazon.com/sdk/adm.html"&gt;ADM&lt;/a&gt; makes the idea behind &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt; more useful: Big
+companies create clouds with little mind of compatibility with others.
+For developers, a unified interface for push notification would be a very
+useful component. Interestingly, Amazon seems have same idea in mind. Just
+several weeks ago, Amazon released another service named
+&lt;a href="http://aws.amazon.com/sns/"&gt;SNS&lt;/a&gt;. What they are doing is quite similar to what &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt; is
+providing (and they charge users for it.)&lt;/p&gt;
+&lt;p&gt;Supporting &lt;a href="https://developer.amazon.com/sdk/adm.html"&gt;ADM&lt;/a&gt; fixed the very piece of &lt;a href="http://github.com/uniqush/uniqush-push"&gt;uniqush-push&lt;/a&gt;: Now, we can say that
+we supports major Android platforms with more confidence.&lt;/p&gt;
+&lt;h3&gt;Chrome apps support is on the way.&lt;/h3&gt;
+&lt;p&gt;&lt;a href="https://github.com/uniqush/uniqush-push/issues/30"&gt;Another issue&lt;/a&gt; on github
+asks for support of Chrome apps. I think it would be a very good step for the
+next release. (This means, we will quickly move to version 1.6.0 if we want to
+keep the same versioning convention.) I don't need to buy another device to
+support it (Buying a Kindle Fire HD cost me $159 even if it was on sale.)&lt;/p&gt;
+&lt;h3&gt;Hey, do you remember uniqush-conn?&lt;/h3&gt;
+&lt;p&gt;Yes, I do! And I would like to share some exciting news here: iOS client
+library is almost done. If you follow the &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;, you may
+notice that we have a new member: &lt;a href="https://github.com/nevo"&gt;nevo&lt;/a&gt;. I know him personally for years and
+he is a very competitive developer and a real expert in iOS development. Our
+iOS client library is developed by &lt;a href="https://github.com/nevo"&gt;nevo&lt;/a&gt; and is working right now.&lt;/p&gt;
+&lt;p&gt;So what I'm waiting for? Why not release all the stuff? Well. First, you can
+always find the code on the &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;. We never hind anything to
+the public. Secondly, releasing a software means taking responsibility.
+&lt;a href="http://github.com/uniqush/uniqush-conn"&gt;uniqush-conn&lt;/a&gt; would be an important component for our users' system. I have to
+make sure it works and works well.&lt;/p&gt;
+&lt;p&gt;Before releasing it, I would like to first write some app and actually eat my own
+dog food. An IM app will be developed to test the &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; system as a whole.
+I will invite my family and friends to use the app. Once it was fully
+tested, I will release it along with detailed documentation.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 1.4.5</title><link href="http://blog.uniqush.org/uniqush-push-1-4-5.html" rel="alternate"></link><published>2013-08-01T00:00:00+02:00</published><updated>2013-08-01T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-08-01:/uniqush-push-1-4-5.html</id><summary type="html">&lt;p&gt;This version contains only one bug fix. Since this bug is critical, it is
+highly recommended to upgrade to this version.&lt;/p&gt;
+&lt;p&gt;Thanks for &lt;a href="https://github.com/cmabastar-gumi"&gt;cmabastar-gumi&lt;/a&gt;'s bug report again. For more details, please check
+out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-5.html"&gt;release note&lt;/a&gt;.&lt;/p&gt;</summary><content type="html">&lt;p&gt;This version contains only one bug fix. Since this bug is critical, it is
+highly recommended to upgrade to this version.&lt;/p&gt;
+&lt;p&gt;Thanks for &lt;a href="https://github.com/cmabastar-gumi"&gt;cmabastar-gumi&lt;/a&gt;'s bug report again. For more details, please check
+out our &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-5.html"&gt;release note&lt;/a&gt;.&lt;/p&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 1.4.4</title><link href="http://blog.uniqush.org/uniqush-push-1-4-4.html" rel="alternate"></link><published>2013-07-20T00:00:00+02:00</published><updated>2013-07-20T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-07-20:/uniqush-push-1-4-4.html</id><summary type="html">&lt;p&gt;This version contains some minor bug fixes and a &lt;em&gt;huge&lt;/em&gt; improvement for APNS. I
+would like to give special thanks to &lt;a href="https://github.com/cmabastar-gumi"&gt;cmabastar-gumi&lt;/a&gt; for his detailed bug
+reports. Please check the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-4.html"&gt;release note&lt;/a&gt; for detailed ChangeLog.&lt;/p&gt;
+&lt;p&gt;In this post, I will explain more about how I improved the performance for
+APNS …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This version contains some minor bug fixes and a &lt;em&gt;huge&lt;/em&gt; improvement for APNS. I
+would like to give special thanks to &lt;a href="https://github.com/cmabastar-gumi"&gt;cmabastar-gumi&lt;/a&gt; for his detailed bug
+reports. Please check the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-4.html"&gt;release note&lt;/a&gt; for detailed ChangeLog.&lt;/p&gt;
+&lt;p&gt;In this post, I will explain more about how I improved the performance for
+APNS.&lt;/p&gt;
+&lt;h3&gt;Overview&lt;/h3&gt;
+&lt;p&gt;Both &lt;a href="https://github.com/uniqush/uniqush-push/issues/24"&gt;issue 24&lt;/a&gt; and &lt;a href="https://github.com/uniqush/uniqush-push/issues/27"&gt;issue 27&lt;/a&gt; described a poor performance when pushing
+notification through APNS. After a brief profiling, I made three changes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Checking &lt;a href="http://bit.ly/Zif0VM"&gt;Feedback Service&lt;/a&gt; less frequently.&lt;/li&gt;
+&lt;li&gt;Using a &lt;a href="http://github.com/uniqush/connpool"&gt;connection pool&lt;/a&gt; to send notifications in parallel.&lt;/li&gt;
+&lt;li&gt;Response the request immediately after sending the notification, without
+  waiting for the error response from APNS.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Checking feedback service less frequently&lt;/h3&gt;
+&lt;p&gt;Starting from version 1.4.2, &lt;em&gt;uniqush-push&lt;/em&gt; supports &lt;a href="http://bit.ly/Zif0VM"&gt;Feedback Service&lt;/a&gt; for
+APNS. Both version 1.4.2 and version 1.4.3 have a very naive approach
+for &lt;a href="http://bit.ly/Zif0VM"&gt;Feedback Service&lt;/a&gt;: &lt;em&gt;uniqush-push&lt;/em&gt; checks feedbacks after every
+push operation. This is very inefficient because it has to establish a new
+TCP connection every time.&lt;/p&gt;
+&lt;p&gt;In version 1.4.4, &lt;em&gt;uniqush-push&lt;/em&gt; checks the feedback for every 10 minutes.
+Although it may be better to provide a parameter for user to set this time
+interval to other values, I see no strong benefit by providing this parameter.
+At this point of time, I would rather use a constant time interval (10 minutes)
+and keep a simple interface for users.&lt;/p&gt;
+&lt;h3&gt;Using connection pools&lt;/h3&gt;
+&lt;p&gt;Before version 1.4.4, &lt;em&gt;uniqush-push&lt;/em&gt; maintains one single connection with APNS
+for each APNS key/certificate pair. Clearly, using a connection pool could
+improve the performance when we have concurrent request, since we can send
+notifications in parallel through several TCP connections. However, APNS'
+document does not clearly say how many connections we can have for each
+key/certificate pair. According to &lt;a href="http://stackoverflow.com/questions/9086956/what-is-the-number-of-persistent-connections-to-apns-allowed"&gt;discussion on
+stackoverflow&lt;/a&gt;,
+15 connections would be find in most cases. In version 1.4.4, we use at most 13
+connections for each key/certificate pair.&lt;/p&gt;
+&lt;p&gt;As a byproduct, a general &lt;a href="http://github.com/uniqush/connpool"&gt;connection pool library&lt;/a&gt; in Go is available on github.&lt;/p&gt;
+&lt;h3&gt;No wait for the error response&lt;/h3&gt;
+&lt;p&gt;OK. This is a trade off we made here. As an asynchronous service, APNS cannot
+guarantee the response time for the error response. What's worse, it does not
+even guarantee that there will be a response.&lt;/p&gt;
+&lt;p&gt;Fortunately, most errors can be checked before sending notifications to APNS.
+In version 1.4.4, &lt;em&gt;uniqush-push&lt;/em&gt; returns success immediately once the
+notification has been sent to APNS. Some error like &lt;em&gt;invalid token&lt;/em&gt; can be
+processed later inside &lt;em&gt;uniqush-push&lt;/em&gt;. In most cases, we are good.&lt;/p&gt;
+&lt;h3&gt;Conclusion&lt;/h3&gt;
+&lt;p&gt;After making the changes above, the performance for APNS is improved ~100x.
+Let's quote &lt;a href="https://github.com/cmabastar-gumi"&gt;cmabastar-gumi&lt;/a&gt;'s test results mentioned in reply to &lt;a href="https://github.com/uniqush/uniqush-push/issues/27"&gt;issue 27&lt;/a&gt;:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;we were able to send 22k messages in less than 3mins and we were also able to
+test around 68k users to be subscribed in around 5mins. Thanks for this
+build! It's damn fast!&lt;/p&gt;
+&lt;/blockquote&gt;</content><category term="news"></category><category term="release note"></category></entry><entry><title>Release 1.4.3 and uniqush-conn</title><link href="http://blog.uniqush.org/uniqush-push-1-4-3.html" rel="alternate"></link><published>2013-05-14T00:00:00+02:00</published><updated>2013-05-14T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-05-14:/uniqush-push-1-4-3.html</id><summary type="html">&lt;p&gt;This version contains some minor bug fixes and includes some hidden features
+which will be used by &lt;a href="http://github.com/uniqush/uniqush-conn"&gt;uniqush-conn&lt;/a&gt;. The &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-3.html"&gt;release note&lt;/a&gt; explains all the
+changes.&lt;/p&gt;
+&lt;p&gt;Instead of the changes themselves, in this post, I would like to talk about how
+they related to the &lt;a href="http://github.com/uniqush/uniqush-conn"&gt;uniqush-conn&lt;/a&gt; and what's the next step …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This version contains some minor bug fixes and includes some hidden features
+which will be used by &lt;a href="http://github.com/uniqush/uniqush-conn"&gt;uniqush-conn&lt;/a&gt;. The &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-3.html"&gt;release note&lt;/a&gt; explains all the
+changes.&lt;/p&gt;
+&lt;p&gt;Instead of the changes themselves, in this post, I would like to talk about how
+they related to the &lt;a href="http://github.com/uniqush/uniqush-conn"&gt;uniqush-conn&lt;/a&gt; and what's the next step.&lt;/p&gt;
+&lt;h3&gt;Hidden features? Why?&lt;/h3&gt;
+&lt;p&gt;Well. This is a free and open source project. There is nothing hide from users.
+However, hidden feature here means something for internal use and may be
+changed or even deleted in the future. Users should not depend upon those
+features.&lt;/p&gt;
+&lt;p&gt;To make those features isolated from daily use, we introduced a set of
+parameters that users should avoid using them. When you send an HTTP request to
+&lt;em&gt;uniqush-push&lt;/em&gt;, you send several parameters. Any parameters whose name starting
+from &lt;code&gt;uniqush.&lt;/code&gt; should be considered as a &lt;em&gt;reserved parameter&lt;/em&gt; and users
+should not use those parameters. This is a very easy way of separating name
+space and fortunately, &lt;em&gt;uniqush&lt;/em&gt; is not a common word.&lt;/p&gt;
+&lt;h3&gt;uniqush-conn? Are you still working on it?&lt;/h3&gt;
+&lt;p&gt;Yes. Definitely. Good news: it is almost done and in fact, you can &lt;a href="https://github.com/uniqush/uniqush-conn/wiki/Play-with-examples"&gt;play with
+it&lt;/a&gt; right now.
+Moreover, you can even use our &lt;a href="http://github.com/uniqush/uniqush-client-java"&gt;java
+library&lt;/a&gt; and learn how to use it
+with &lt;a href="https://github.com/uniqush/uniqush-client-java/tree/master/src/org/uniqush/examples/java"&gt;the
+example&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;So what am I waiting for? Why not release it and have all the fun?&lt;/p&gt;
+&lt;p&gt;As I promised, there should be libraries for mobile clients. Right now, I'm
+still working on the &lt;a href="https://github.com/uniqush/uniqush-client-android"&gt;android
+library&lt;/a&gt; and there is still
+zero line of code for iOS library. If I cannot support these two popular
+platforms with the same functionality, I should not release the code.&lt;/p&gt;
+&lt;p&gt;But you can still read the code if you are really impatient.&lt;/p&gt;
+&lt;h3&gt;What's next?&lt;/h3&gt;
+&lt;p&gt;In fact, my focus has switched to &lt;a href="http://github.com/uniqush/uniqush-conn"&gt;uniqush-conn&lt;/a&gt; and its related libraries in
+recent months. You can tell this from &lt;a href="http://github.com/monnand"&gt;my github commit
+history&lt;/a&gt;, where I am extending my longest streak by
+working on these projects.&lt;/p&gt;
+&lt;p&gt;As I can expect, the &lt;a href="http://github.com/uniqush/uniqush-client-android"&gt;android
+library&lt;/a&gt; will be coming
+soon. But the iOS library may experience some delay.&lt;/p&gt;</content><category term="news"></category><category term="uniqush"></category><category term="release note"></category><category term="plan"></category></entry><entry><title>Release 1.4.2</title><link href="http://blog.uniqush.org/uniqush-push-1-4-2.html" rel="alternate"></link><published>2013-04-01T00:00:00+02:00</published><updated>2013-04-01T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-04-01:/uniqush-push-1-4-2.html</id><summary type="html">&lt;p&gt;This version is mainly a bug-fix version. See the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-2.html"&gt;release note&lt;/a&gt; for more
+details. I will briefly explain each point below. (This version is released on
+April 1st. But it is &lt;strong&gt;really not&lt;/strong&gt; a joke, I promise.)&lt;/p&gt;
+&lt;h3&gt;Proper stop&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Stop on &lt;em&gt;/stop&lt;/em&gt;. Sorry, I forgot to implement the feature …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;This version is mainly a bug-fix version. See the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-2.html"&gt;release note&lt;/a&gt; for more
+details. I will briefly explain each point below. (This version is released on
+April 1st. But it is &lt;strong&gt;really not&lt;/strong&gt; a joke, I promise.)&lt;/p&gt;
+&lt;h3&gt;Proper stop&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Stop on &lt;em&gt;/stop&lt;/em&gt;. Sorry, I forgot to implement the feature after
+  refactoring the main package. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/9"&gt;issue 9&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Stop on &lt;em&gt;SIGTERM&lt;/em&gt;. Similar with &lt;a href="https://github.com/uniqush/uniqush-push/issues/9"&gt;issue 9&lt;/a&gt;. User can now stop the
+  program by sending &lt;em&gt;SIGTERM&lt;/em&gt; to the process. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/8"&gt;issue 8&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The previous two bug fixes implemented what I promised in the document. Due to
+the refactoring in version 1.4.1, this feature was not implemented,
+accidentally.&lt;/p&gt;
+&lt;h3&gt;Nil-pointer crash&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Fixed a nil-pointer crash bug. The program will experience a
+  nil-pointer crash (same thing as NULL pointer) under some conditions. For
+example, if user provides an invalid APIKEY for a GCM provider, then
+uniqush-push will crash when the user tries to push through this malformed
+provider. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/10"&gt;issue 10&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thank you, Fabrizio! Your &lt;a href="https://groups.google.com/forum/?fromgroups=#!topic/uniqush/dw5QyNkb3ro"&gt;bug report&lt;/a&gt; helps me a lot on this bug.&lt;/p&gt;
+&lt;h3&gt;Feedback Service in APNS&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;feature&lt;/em&gt; Support &lt;a href="http://bit.ly/Zif0VM"&gt;Feedback Service&lt;/a&gt; in APNS. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/3"&gt;issue 3&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I would say this is partly supported. The next version will support &lt;a href="http://bit.ly/Zif0VM"&gt;Feedback
+Service&lt;/a&gt; much better. In the &lt;a href="http://bit.ly/Zif0VM"&gt;Feedback Service&lt;/a&gt;'s document, it says:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;You should use the timestamp to determine if the application on the device
+re-registered with your service since the moment the device token was
+recorded on the feedback service. If it hasn’t, you should cease sending push
+notifications to the device.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;However, &lt;em&gt;uniqush-push&lt;/em&gt; does not keep the information like creation time of
+each delivery point. To avoid unnecessary unsubscription, &lt;em&gt;uniqush-push&lt;/em&gt; will
+check the feedback after each push operation. This is not the optimal solution
+and it will be fixed in the next version.&lt;/p&gt;</content><category term="news"></category><category term="uniqush"></category><category term="release note"></category></entry><entry><title>1.4.1 and more</title><link href="http://blog.uniqush.org/uniqush-push-1-4-1.html" rel="alternate"></link><published>2013-02-25T00:00:00+01:00</published><updated>2013-02-25T00:00:00+01:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-02-25:/uniqush-push-1-4-1.html</id><summary type="html">&lt;p&gt;Today, I have released uniqush-push 1.4.1, whose &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-1.html"&gt;release note&lt;/a&gt; is available now
+along its binary files. It is highly recommended to update to this version,
+since there will be some non-deterministic bugs in old versions. In this blog,
+I will first go through the changes and explain some …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Today, I have released uniqush-push 1.4.1, whose &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-1.html"&gt;release note&lt;/a&gt; is available now
+along its binary files. It is highly recommended to update to this version,
+since there will be some non-deterministic bugs in old versions. In this blog,
+I will first go through the changes and explain some of them in details.&lt;/p&gt;
+&lt;p&gt;The changes in this version contains some improvements and bug fixes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;improvement&lt;/em&gt; On (un)subscription, the log message now contains service and
+  subscriber information. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/2"&gt;issue 2&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;improvement&lt;/em&gt; On adding an APNS push service provider, uniqush-push will
+  report error immediately if the given certificate or key files do not exist.
+Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/6"&gt;issue 6&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Removed all code related memory pool. There is no dependency on
+  memory pool any more. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/7"&gt;issue 7&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;improvement&lt;/em&gt; Rewrote the code in &lt;em&gt;main&lt;/em&gt; package. It is more clean, simple
+  and less redundant. Fixed &lt;a href="https://github.com/uniqush/uniqush-push/issues/5"&gt;issue 5&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I will explain them one by one below.&lt;/p&gt;
+&lt;h3&gt;First two improvements&lt;/h3&gt;
+&lt;p&gt;These two changes are not quite important but useful in its own right.&lt;/p&gt;
+&lt;p&gt;Apparently, adding more information into the log will help users and myself to
+identify the potential bug, which is generally a good thing as long as we do
+not leak sensitive information.&lt;/p&gt;
+&lt;p&gt;A system would be less error-prone if it reports error as soon as possible.
+Before this version, users can add an APNS push service provider even by
+providing a wrong path to the certificate and/or key files. The user can only
+know this error if they are actually using the malformed APNS provider to push
+something to a client. This is too late, and it should be better to report the
+error in advance.&lt;/p&gt;
+&lt;h3&gt;No more memory pool&lt;/h3&gt;
+&lt;p&gt;This is a hard decision to make.&lt;/p&gt;
+&lt;p&gt;I came up with the memory pool idea because of the &lt;a href="http://blog.golang.org/2011/06/profiling-go-programs.html"&gt;famouse blog
+post&lt;/a&gt;. In the post,
+Russ Cox was able to optimize a Go program 15x faster than the original
+version, making it even faster than an equivalent C++ program. That post is
+amazing and I really like it.&lt;/p&gt;
+&lt;p&gt;In the blog post, Russ Cox said:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Having a garbage-collected language doesn't mean you can ignore memory
+allocation issues. In this case, a simple solution is to introduce a cache so
+that each call to FindLoops reuses the previous call's storage when possible.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Given the C/C++ background I had, the sentences above, to me, were like saying:
+use a memory pool under whatever condition if you want to have a fast program.&lt;/p&gt;
+&lt;p&gt;Then I made a memory pool. That is the beginning of the nightmare. I received
+several bug reports on the mailing list saying that they observed some very
+weird behavior. For example, some client received a message which should be
+sent to another one. I tried to re-produce their bugs bug failed.&lt;/p&gt;
+&lt;p&gt;Finally, I realized that the push service provider and delivery point
+structures were not cleared before putting back to the memory pool. This
+reminded me about the weird bugs on the mailing list.&lt;/p&gt;
+&lt;p&gt;I had two options: clear all data before putting them back to the pool; or drop
+the whole idea of memory pool.&lt;/p&gt;
+&lt;p&gt;Well. I do like a fast program, but I love simplicity as well. Managing my own
+memory using a garbage-collected language became a very awkward behavior to me.
+It is true that Go's garbage collector is not perfect right now. Even if it is
+good enough, it may need a good care of memory when writing programs anyway. But
+it is not my current concern. I want a simple program which can work. In fact, I
+even wrote a version with a correct behavior using memory pool. But I decided
+to not release it because of potential bugs caused by complexity.&lt;/p&gt;
+&lt;h3&gt;Refactory&lt;/h3&gt;
+&lt;p&gt;OK. this is a strong word for developers. Yes, I rewrote the whole &lt;em&gt;main&lt;/em&gt; package.&lt;/p&gt;
+&lt;p&gt;I have to say that developing &lt;em&gt;uniqush&lt;/em&gt; is really a learning process to me. I
+developed quite a few programs, some of them are even widely used. However, I
+haven't taken care of a project before uniqush. In uniqush, I have to write
+correct code while making sure it can evolve in a healthy way. This includes
+correcting my own mistakes and bad decisions in the code.&lt;/p&gt;
+&lt;p&gt;Refactoring the whole &lt;em&gt;main&lt;/em&gt; package is correcting my bad design decision. I
+made a wrong choice of using channels and goroutines in Go making the &lt;em&gt;main&lt;/em&gt;
+package cumbersome and hard to maintain. After this refactoring, the whole
+&lt;em&gt;main&lt;/em&gt; package contains only four files and reduced around a thousand of lines
+of code. (You can see this fact from the &lt;a href="https://github.com/uniqush/uniqush-push/graphs/code-frequency"&gt;code frequency&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;Besides, since I am going to support &lt;a href="http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW17"&gt;feedback service&lt;/a&gt; in APNS, such
+refactoring in inevitable. The service requires a new interface for push
+service providers and old &lt;em&gt;main&lt;/em&gt; package can hardly support the new interface.&lt;/p&gt;
+&lt;h3&gt;What about... uniqush-conn?&lt;/h3&gt;
+&lt;p&gt;Sorry! I didn't expect that some essential parts are missing in Go and I have
+to write them by my own. More specifically, I have already written a
+&lt;a href="https://github.com/monnand/dhkx"&gt;Diffie-Hellman Key Exchange library in Go&lt;/a&gt;,
+and I am going to implement RSASSA-PSS signature algorithm later. Even though,
+I still want to use Go on server side, simply because it is too much fun.&lt;/p&gt;
+&lt;p&gt;With that being said, uniqush-conn will be delayed, again.&lt;/p&gt;</content><category term="news"></category><category term="uniqush"></category><category term="release note"></category></entry><entry><title>New release of uniqush-push: 1.4.0</title><link href="http://blog.uniqush.org/uniqush-push-1-4-0.html" rel="alternate"></link><published>2013-01-07T00:00:00+01:00</published><updated>2013-01-07T00:00:00+01:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2013-01-07:/uniqush-push-1-4-0.html</id><summary type="html">&lt;p&gt;I am glad to announce the new release of uniqush-push: 1.4.0&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-0.html"&gt;release note&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Changes in this version:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Fixed the bug on re-connecting APNS server. Thanks to Ivan Yu for his &lt;a href="https://groups.google.com/forum/?fromgroups=#!topic/uniqush/CLs7BEdDDoM"&gt;detailed bug report and analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;feature&lt;/em&gt; Added &lt;em&gt;loc-key&lt;/em&gt;, &lt;em&gt;loc-args&lt;/em&gt; and &lt;em&gt;action-loc-key …&lt;/em&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;I am glad to announce the new release of uniqush-push: 1.4.0&lt;/p&gt;
+&lt;p&gt;Check out the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-0.html"&gt;release note&lt;/a&gt; for more details.&lt;/p&gt;
+&lt;p&gt;Changes in this version:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;bugfix&lt;/em&gt; Fixed the bug on re-connecting APNS server. Thanks to Ivan Yu for his &lt;a href="https://groups.google.com/forum/?fromgroups=#!topic/uniqush/CLs7BEdDDoM"&gt;detailed bug report and analysis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;feature&lt;/em&gt; Added &lt;em&gt;loc-key&lt;/em&gt;, &lt;em&gt;loc-args&lt;/em&gt; and &lt;em&gt;action-loc-key&lt;/em&gt; support for APNS. You can send your localized message through uniqush-pus now. This part of code is adapted from &lt;a href="https://github.com/benwei"&gt;benwei&lt;/a&gt;'s patch. Thank you, &lt;a href="https://github.com/benwei"&gt;benwei&lt;/a&gt;. Here is an example of using &lt;em&gt;loc-key&lt;/em&gt; and &lt;em&gt;loc-args&lt;/em&gt;: &lt;code&gt;curl http://127.0.0.1:9898/push -d service=fake -d subscriber=client -d msg="hello" -d loc-key="lockey" -d loc-args="hello,world"&lt;/code&gt; Then the &lt;code&gt;loc-args&lt;/code&gt; sent to the APNS will be &lt;code&gt;["hello", "world"]&lt;/code&gt;. Yes. it is comma separated. If one of your loc-key contains comma(,), then add a backslash (\) in front of the comma. (Similar to escape character in C)&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;feature&lt;/em&gt; Added support to true multicast for GCM.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;feature&lt;/em&gt; Added time-to-live support for both GCM and APNS. It defines how long (in seconds) the message should be kept on push service provider's server if the device is offline.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;change&lt;/em&gt; When subscribe to a GCM service, the user don't need to provide the &lt;em&gt;account&lt;/em&gt; parameter. When unsubscribe a service, the user need to provide the same &lt;em&gt;regid&lt;/em&gt; as the one he used to subscribe. For existing subscribers (i.e. the subscriber is added using previous releases), the &lt;em&gt;account&lt;/em&gt; parameter is &lt;strong&gt;required&lt;/strong&gt; when unsubscribe the service.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;change&lt;/em&gt; This change only affects developers. The interface of &lt;em&gt;PushServiceType&lt;/em&gt; is changed making it possible to support true multicast on GCM. Corresponding components are changed.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="news"></category><category term="uniqush"></category><category term="release note"></category></entry><entry><title>New version of uniqush-push</title><link href="http://blog.uniqush.org/uniqush-push-1-3-2.html" rel="alternate"></link><published>2012-11-19T00:00:00+01:00</published><updated>2012-11-19T00:00:00+01:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-11-19:/uniqush-push-1-3-2.html</id><summary type="html">&lt;p&gt;We have just released a new version of uniqush-push, it's version 1.3.2 now.
+This version fixed some bugs and merged four repositories into single one.
+Details are in the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-3-2.html"&gt;release
+note&lt;/a&gt;. The two bugs fixed in this version were all reported by Ivan Yu which is one of …&lt;/p&gt;</summary><content type="html">&lt;p&gt;We have just released a new version of uniqush-push, it's version 1.3.2 now.
+This version fixed some bugs and merged four repositories into single one.
+Details are in the &lt;a href="http://uniqush.org/release-notes/rn-uniqush-push-1-3-2.html"&gt;release
+note&lt;/a&gt;. The two bugs fixed in this version were all reported by Ivan Yu which is one of uniqush's users and active on the mailing list. Special thank to him.&lt;/p&gt;</content><category term="news"></category><category term="uniqush"></category><category term="release note"></category></entry><entry><title>Making your own contribution to uniqush</title><link href="http://blog.uniqush.org/howto-contribute.html" rel="alternate"></link><published>2012-09-23T00:00:00+02:00</published><updated>2012-09-23T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-09-23:/howto-contribute.html</id><summary type="html">&lt;p&gt;&lt;a href="http://uniqush.org"&gt;Uniqush&lt;/a&gt; now is receiving a growing attention from both users and developers.
+Some people have already contacted me personally or publicly saying they are
+willing to make there own contribution to &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;. Some of them have already
+made a pull request on GitHub.&lt;/p&gt;
+&lt;p&gt;It is really an honor to receive …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;a href="http://uniqush.org"&gt;Uniqush&lt;/a&gt; now is receiving a growing attention from both users and developers.
+Some people have already contacted me personally or publicly saying they are
+willing to make there own contribution to &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;. Some of them have already
+made a pull request on GitHub.&lt;/p&gt;
+&lt;p&gt;It is really an honor to receive those talent works, merge them into our
+repositories and make a better system through this process. To make it more
+efficient and less error-prone, a new document on &lt;a href="http://uniqush.org/documentation/contribute.html"&gt;how to make a contribution&lt;/a&gt;
+is online now. It is highly recommended to &lt;em&gt;read
+&lt;a href="http://uniqush.org/documentation/contribute.html"&gt;this&lt;/a&gt; document first&lt;/em&gt; before
+making any contribution to &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Some highlighted part of the document:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;For all source code repositories, there are three branches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;master branch, contains the most recent changes, which are tested and will be
+  contained in the next release version. Normally, the code in master branch
+should compile and pass some basic test cases.&lt;/li&gt;
+&lt;li&gt;exp branch, contains the most recent changes, which may contain bugs, or even
+  not be compiled. &lt;strong&gt;Every contribution should be made based on exp branch&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;go1 branch (or release branch). If it is a repository contains
+  &lt;a href="http://golang.org"&gt;go&lt;/a&gt; code, then this branch is named &lt;em&gt;go1&lt;/em&gt;; otherwise, it
+is named &lt;em&gt;release&lt;/em&gt;. As the name suggested, it contains the latest release
+version of the code. Please &lt;em&gt;DO NOT&lt;/em&gt; make contribution based on this branch.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If you want to contribute your source code, please make sure your changes are
+based on &lt;em&gt;exp&lt;/em&gt; branch, because we put our latest code there. It would be better
+to put your changed version in an individual branch or at least in &lt;em&gt;exp&lt;/em&gt;
+branch, and then send your pull request on github. Before doing any work, you
+may want to read &lt;a href="https://help.github.com/articles/fork-a-repo"&gt;this document&lt;/a&gt;
+from &lt;a href="http://github.com"&gt;github&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Please feel free to contribute your code, bug reports, ideas, suggests to this
+project.  Whatever your contribution is, it is essential to us and all users in
+this community. We appreciate your support!&lt;/p&gt;</content><category term="uniqush"></category><category term="develop"></category></entry><entry><title>New Feature: push with wildcard</title><link href="http://blog.uniqush.org/wildcard.html" rel="alternate"></link><published>2012-08-10T00:00:00+02:00</published><updated>2012-08-10T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-08-10:/wildcard.html</id><summary type="html">&lt;p&gt;NOTE: This feature is included in version 1.3.1 and later. Please check out our latest release from the &lt;a href="http://uniqush.org/downloads.html"&gt;download page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to announce a new feature in uniqush-push: wildcard. More precisely, the asterisk sign (*).&lt;/p&gt;
+&lt;p&gt;Just like wildcard in UNIX system, you can use asterisk sign (*) to …&lt;/p&gt;</summary><content type="html">&lt;p&gt;NOTE: This feature is included in version 1.3.1 and later. Please check out our latest release from the &lt;a href="http://uniqush.org/downloads.html"&gt;download page&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I would like to announce a new feature in uniqush-push: wildcard. More precisely, the asterisk sign (*).&lt;/p&gt;
+&lt;p&gt;Just like wildcard in UNIX system, you can use asterisk sign (*) to match zero or more characters to specify more than one subscribers.&lt;/p&gt;
+&lt;p&gt;Here is an example (again, I use curl to demonstrate. Of course, you can use any language with HTTP library to communicate with uniqush-push):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl http://127.0.0.1:9898/push -d service=myservice -d subscriber=uniqush.* -d msg=”Hello World”
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This command will push a notification to any subscriber whose name starts with "uniqush."&lt;/p&gt;
+&lt;p&gt;And of course, if you like, you can use this feature to push message to &lt;em&gt;all&lt;/em&gt; subscribers:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;curl http://127.0.0.1:9898/push -d service=myservice -d subscriber=* -d msg=”Hello World”
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;This is a very useful feature if you want to classify your subscribers in groups. For example, I have two groups, namely group1 and group2. We can have a naming convention, say all subscribers under group1 should have names start with "group1.". If we want to send a message to all subscribers in group1, we can simply say, send it to group1.*. It's very easy and convenient.&lt;/p&gt;
+&lt;p&gt;One side effect brought by this feature is a more strict naming rule for services and subscribers. Any service/subscriber's name should only contain: 26 English letters (a-z and A-Z), numbers(0-9), dash (-), underscore (_), dot (.). In short, it should match this regular expression: &lt;code&gt;^[a-zA-Z0-9-\_\\.]+$&lt;/code&gt;. Any other character should not be used in service/subscriber's name.&lt;/p&gt;
+&lt;p&gt;NOTE: Asterisk sign (*) is the only wildcard we support right now. I see no reason to support more wildcards at this time (like ?, [], etc.). If you have any comment/suggestion, it would be more than welcome.&lt;/p&gt;</content><category term="news"></category><category term="uniqush-push"></category></entry><entry><title>Unqiush.org is upgraded</title><link href="http://blog.uniqush.org/website-upgrade.html" rel="alternate"></link><published>2012-08-04T00:00:00+02:00</published><updated>2012-08-04T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-08-04:/website-upgrade.html</id><summary type="html">&lt;p&gt;As we mentioned in the &lt;a href="update-2012-07-31.html"&gt;previous update&lt;/a&gt;, the website of &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt; is now upgraded. All content in previous pages are updated and the whole website is based on static pages generated by &lt;a href="http://webgen.rubyforge.org/"&gt;webgen&lt;/a&gt;. Besides, we provide &lt;a href="http://uniqush.org/downloads.html"&gt;binary packages&lt;/a&gt; for 64-bit systems, including .rpm, .deb and .tar.gz.&lt;/p&gt;
+&lt;p&gt;Anohter news …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As we mentioned in the &lt;a href="update-2012-07-31.html"&gt;previous update&lt;/a&gt;, the website of &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt; is now upgraded. All content in previous pages are updated and the whole website is based on static pages generated by &lt;a href="http://webgen.rubyforge.org/"&gt;webgen&lt;/a&gt;. Besides, we provide &lt;a href="http://uniqush.org/downloads.html"&gt;binary packages&lt;/a&gt; for 64-bit systems, including .rpm, .deb and .tar.gz.&lt;/p&gt;
+&lt;p&gt;Anohter news is: the &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; is working now to replace the old uniqush repository under &lt;a href="http://github.com/monnand"&gt;my github account&lt;/a&gt;. This change will not affect any function of &lt;em&gt;uniqush-push&lt;/em&gt;, but will help us to maintain a more organized code base and provide an easy way to contribute.&lt;/p&gt;
+&lt;p&gt;By the end of August, we will release version 1.3.1, which will provide the following functions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;uniqush-push&lt;/em&gt; will support wildcast when you push some notification to subscribers. For example, you can name your subscriber as group1.sub1, group1.sub2, group1.sub3, etc. Then you can say "push message to group1.*" and the message will be push to all subscribers whose name starting from group1..&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;uniqush-push&lt;/em&gt; will support true multicast. Because [GCM] introduced multicast, we need to support it in native way.&lt;/li&gt;
+&lt;/ul&gt;</content><category term="news"></category><category term="plan"></category></entry><entry><title>Big changes are coming soon</title><link href="http://blog.uniqush.org/update-2012-07-31.html" rel="alternate"></link><published>2012-07-31T00:00:00+02:00</published><updated>2012-07-31T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-07-31:/update-2012-07-31.html</id><summary type="html">&lt;p&gt;Given the plan in &lt;a href="http://blog.uniqush.org/uniqush-after-go1.html"&gt;uniqush after go1&lt;/a&gt;, some changes, which may be considered as big changes, will be made in the coming August.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A new static website for &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt;. Yes, no more &lt;a href="http://trac.edgewall.org/"&gt;trac&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A new &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; on github is created. All &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; related code will be moved under …&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;p&gt;Given the plan in &lt;a href="http://blog.uniqush.org/uniqush-after-go1.html"&gt;uniqush after go1&lt;/a&gt;, some changes, which may be considered as big changes, will be made in the coming August.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A new static website for &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt;. Yes, no more &lt;a href="http://trac.edgewall.org/"&gt;trac&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;A new &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; on github is created. All &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; related code will be moved under &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;. It is more than welcome to join it.&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; will provide binary packages for 64-bit GNU/Linux systems, including .deb package, .rpm package and .tar.gz package (which can be used on all 64-bit GNU/Linux systems). It is &lt;strong&gt;highly&lt;/strong&gt; recommended to install &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; system from those packages. No more &lt;em&gt;go get&lt;/em&gt; (but you can still use &lt;em&gt;go get&lt;/em&gt; anyway if you like).&lt;/li&gt;
+&lt;li&gt;Last but not least, the release of &lt;em&gt;uniqush-conn&lt;/em&gt; and other stuff will be postponed (sorry about that). Hopefully, I could make it before Feb. 2013. Watch the repositories on &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; for more updates.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Here are some details about these updates.&lt;/p&gt;
+&lt;h3&gt;Home page will be static&lt;/h3&gt;
+&lt;p&gt;Check out our &lt;a href="http://github.com/uniqush/uniqush-www/"&gt;uniqush-www&lt;/a&gt; repository, the whole website will be there. It is a static website created by &lt;a href="http://webgen.rubyforge.org/"&gt;webgen&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Reason:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I found some spam using &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;'s &lt;a href="http://uniqush.org/report"&gt;ticket&lt;/a&gt; even if I have already added CAPTCHA plugin, which is very annoying.&lt;/li&gt;
+&lt;li&gt;I don't quite like to backup databases for wiki pages on &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;, although it is done automatically by two cron jobs running on &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt; and a small Arm server in my home. Recovery the whole website from scratch is still hard even if I have all content on my hand (import data to database, setup &lt;a href="http://trac.edgewall.org/"&gt;trac&lt;/a&gt; and its plugins again, etc.)&lt;/li&gt;
+&lt;li&gt;If I use &lt;a href="http://webgen.rubyforge.org/"&gt;webgen&lt;/a&gt; based static pages, I can easily change the look of the website by changing the template.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The website will be replaced once I migrated all pages on &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt;. So please expecting the outage of &lt;a href="http://uniqush.org"&gt;uniqush.org&lt;/a&gt; for one or two days. In the meantime, you can still access our source code from &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Uniqush organization on github&lt;/h3&gt;
+&lt;p&gt;The &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt; is meant to cover most development-related operations on uniqush system --- including &lt;em&gt;uniqush-conn&lt;/em&gt;, &lt;em&gt;uniqush-push&lt;/em&gt;,  &lt;em&gt;uniqush-client&lt;/em&gt; and their issue tracks. This job could be done better by using an individual organization account, rather than a personal account. Moreover, considering there are already some people contacted me saying they are interested to join the &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; system development team, an organization is the best fit for such team work in the future.&lt;/p&gt;
+&lt;p&gt;However, because we will migrate source code to &lt;a href="http://github.com/uniqush"&gt;uniqush organization&lt;/a&gt;, programs, if any, using code from uniqush-push should be aware of the changed url.&lt;/p&gt;
+&lt;h3&gt;Binary packages&lt;/h3&gt;
+&lt;p&gt;One of the beautiful parts of &lt;a href="http://golang.org"&gt;Go programming language&lt;/a&gt; is: it deliberately does not support shared library or dynamic library. That means the program written in &lt;a href="http://golang.org"&gt;Go programming language&lt;/a&gt; is &lt;strong&gt;self-contained&lt;/strong&gt;, i.e. one executable, no dependencies (in the sense of library, not external program). Once the program is produced from compiler, you can copy it around and it can be &lt;strong&gt;always&lt;/strong&gt; run regardless what ever the libraries you have installed on the machine.&lt;/p&gt;
+&lt;p&gt;This makes me very easy to produce binary packages, which should be a necessary part for an free/open-source project.&lt;/p&gt;
+&lt;p&gt;Right now, all packages are produced and will be on-line after replacing the website with static pages.&lt;/p&gt;
+&lt;h3&gt;&lt;em&gt;uniqush-conn&lt;/em&gt;, and other stuff&lt;/h3&gt;
+&lt;p&gt;I have to appologize for the delay. I over-estimated my ability and under-estimated the workload I am facing right now. However, the good thing is: I have a more concrete design on the whole system.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;uniqush-conn&lt;/em&gt;, as always, will be written in &lt;a href="http://golang.org"&gt;Go programming language&lt;/a&gt;. The core part of &lt;em&gt;uniqush-client&lt;/em&gt; will be written in C for portability and performance consideration. There will be several derived work on &lt;em&gt;uniqush-client&lt;/em&gt; to support different platforms including Android, iOS. This means the core part of mobile library is written in native C language, which, as you can expect, will be and should be fast.&lt;/p&gt;
+&lt;h3&gt;Misc&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;uniqush-push&lt;/em&gt; will support wildcast when you push some notification to subscribers. For example, you can name your subscriber as group1.sub1, group1.sub2, group1.sub3, etc. Then you can say "push message to group1.*" and the message will be push to all subscribers whose name starting from group1..&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;uniqush-push&lt;/em&gt; will support true multicast. Because &lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt; introduced multicast, we need to support it in native way.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All features above will be included in the next release, verion 1.3.1&lt;/p&gt;</content><category term="plan"></category></entry><entry><title>GCM is supported now</title><link href="http://blog.uniqush.org/gcm-support.html" rel="alternate"></link><published>2012-06-29T00:00:00+02:00</published><updated>2012-06-29T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-06-29:/gcm-support.html</id><summary type="html">&lt;p&gt;Google announced
+&lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt; on Google
+IO 2012 two days before. It is a push notification service to replace
+&lt;a href="http://code.google.com/android/c2dm/"&gt;C2DM&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Two days later, you can use &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; to send notifications to android devices using
+&lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt;. The latest &lt;a href="http://uniqush.org/wiki/UniqushAPIs"&gt;API document&lt;/a&gt; contains details on using GCM.&lt;/p&gt;
+&lt;p&gt;The latest version of uniqush now is …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Google announced
+&lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt; on Google
+IO 2012 two days before. It is a push notification service to replace
+&lt;a href="http://code.google.com/android/c2dm/"&gt;C2DM&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Two days later, you can use &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; to send notifications to android devices using
+&lt;a href="http://developer.android.com/guide/google/gcm/index.html"&gt;GCM&lt;/a&gt;. The latest &lt;a href="http://uniqush.org/wiki/UniqushAPIs"&gt;API document&lt;/a&gt; contains details on using GCM.&lt;/p&gt;
+&lt;p&gt;The latest version of uniqush now is 1.3.x. Instead of installing from source code, binary packages including .deb and .tar.gz format will be online soon. (No later than July 2, 2012.)&lt;/p&gt;</content><category term="news"></category><category term="uniqush"></category><category term="gcm"></category></entry><entry><title>Recent update on uniqush-push</title><link href="http://blog.uniqush.org/update-2012-05-08.html" rel="alternate"></link><published>2012-05-08T00:00:00+02:00</published><updated>2012-05-08T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-05-08:/update-2012-05-08.html</id><summary type="html">&lt;p&gt;As I mentioned in &lt;a href="http://blog.uniqush.org/uniqush-after-go1.html"&gt;uniqush after Go 1&lt;/a&gt;, &lt;em&gt;uniqushd&lt;/em&gt; is now renamed to &lt;em&gt;uniqush-push&lt;/em&gt;. However, it is more than a renaming work. I will review some changes on &lt;em&gt;uniqush-push&lt;/em&gt; in this blog post.&lt;/p&gt;
+&lt;h3&gt;HTTP responds more information&lt;/h3&gt;
+&lt;p&gt;Users communicated with &lt;em&gt;uniqushd&lt;/em&gt; through HTTP. Whenever a request was received, &lt;em&gt;uniqushd&lt;/em&gt; would …&lt;/p&gt;</summary><content type="html">&lt;p&gt;As I mentioned in &lt;a href="http://blog.uniqush.org/uniqush-after-go1.html"&gt;uniqush after Go 1&lt;/a&gt;, &lt;em&gt;uniqushd&lt;/em&gt; is now renamed to &lt;em&gt;uniqush-push&lt;/em&gt;. However, it is more than a renaming work. I will review some changes on &lt;em&gt;uniqush-push&lt;/em&gt; in this blog post.&lt;/p&gt;
+&lt;h3&gt;HTTP responds more information&lt;/h3&gt;
+&lt;p&gt;Users communicated with &lt;em&gt;uniqushd&lt;/em&gt; through HTTP. Whenever a request was received, &lt;em&gt;uniqushd&lt;/em&gt; would reply an HTTP response containing only one line: &lt;em&gt;id=xxxxx&lt;/em&gt;. It is the request ID which helps users check the status in log. There was no other information responds from &lt;em&gt;uniqushd&lt;/em&gt;. Users have to check log to see if a push was successfully sent to the cloud.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;uniqush-push&lt;/em&gt; now uses HTTP as communicating protocol as well, but provide more information inside the HTTP response. On adding push service provider or subscribing a service, it responds the service provider's ID or delivery point's ID respectively. On push, it responds &lt;em&gt;Success!&lt;/em&gt; on, well..., success. On failure, it responds the reason. But there is one exception: on retry, which usually happens on some temporary failure, it only respond &lt;em&gt;Retry&lt;/em&gt; and users have to check log to see if the message is successfully delivered.&lt;/p&gt;
+&lt;h3&gt;Fixed a bug&lt;/h3&gt;
+&lt;p&gt;Thank &lt;a href="http://twitter.com/M_Cainelli"&gt;@M_Cainelli&lt;/a&gt; for his &lt;a href="https://twitter.com/#!/M_Cainelli/status/199917700305268737"&gt;bug report&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Description of this bug: send subscribe command to &lt;em&gt;uniqush-push&lt;/em&gt; several times with same delivery point under same subscriber, push a message to the subscriber, there will be multiple messages pushed to the delivery point.&lt;/p&gt;
+&lt;p&gt;This is because of the cache mechanism in front of database. On adding a delivery point to a subscriber in the cache, we forget to check if the delivery point is already under the subscriber. This will then cause the multiple time of delivery.&lt;/p&gt;
+&lt;h3&gt;Future&lt;/h3&gt;
+&lt;p&gt;Besides, we have re-arranged the namespace preparing the comming of &lt;em&gt;uniqush-conn&lt;/em&gt;. I am busy on designing the protocol between &lt;em&gt;uniqush-conn&lt;/em&gt; and client. Hopefully, we could release &lt;em&gt;uniqush-conn&lt;/em&gt; on time.&lt;/p&gt;</content><category term="uniqush"></category><category term="uniqush-push"></category></entry><entry><title>Uniqush after Go 1</title><link href="http://blog.uniqush.org/uniqush-after-go1.html" rel="alternate"></link><published>2012-03-28T00:00:00+02:00</published><updated>2012-03-28T00:00:00+02:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-03-28:/uniqush-after-go1.html</id><summary type="html">&lt;p&gt;Today, March 28th 2012, is a big day for every gopher: Go team
+&lt;a href="http://blog.golang.org/2012/03/go-version-1-is-released.html"&gt;released Go version 1&lt;/a&gt;. This
+means Go -- both the language itself and its standard library -- is
+stable now. Because of this, I think it's time to move
+&lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; onto next stage. I would like to share
+the …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Today, March 28th 2012, is a big day for every gopher: Go team
+&lt;a href="http://blog.golang.org/2012/03/go-version-1-is-released.html"&gt;released Go version 1&lt;/a&gt;. This
+means Go -- both the language itself and its standard library -- is
+stable now. Because of this, I think it's time to move
+&lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; onto next stage. I would like to share
+the blueprint of &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; in this article.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Instead of simply providing push service,
+&lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; will try to provide communication
+facilities for mobile developers, including both server-side
+developers and mobile-side developers.&lt;/strong&gt; This change will make the
+current work of &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt;, which only has one
+single program -- &lt;em&gt;uniqushd&lt;/em&gt;, become a (relatively small) part of the
+whole uniqush project.&lt;/p&gt;
+&lt;p&gt;In the future, the uniqush project will mainly consists of four
+parts: &lt;em&gt;uniqush-push&lt;/em&gt;, &lt;em&gt;uniqush-conn&lt;/em&gt;, &lt;em&gt;uniqush-front&lt;/em&gt; and &lt;em&gt;uniqush-mobile-libs&lt;/em&gt;. I would
+explain each of them in the following sections.&lt;/p&gt;
+&lt;h3&gt;uniqushd becomes uniqush-push (done)&lt;/h3&gt;
+&lt;p&gt;Currently, uniqushd is the only program we provide in uniqush
+project. The function of this program is to behave as a proxy between
+third party server and push service cloud (C2DM, APNs, etc.) so that
+the third party server can push messages to many platforms (Android,
+iOS) in a consistent syntax without knowing protocols on different
+clouds.&lt;/p&gt;
+&lt;p&gt;In the future, &lt;em&gt;uniqushd&lt;/em&gt; will be renamed to &lt;em&gt;uniqush-push&lt;/em&gt; because it
+actually only deals with push service. It will support more platforms
+(Windows Phone, Black Berry, etc.), but there is no more functions
+added to this program. It only focuses on one single task: push a
+message through different clouds.&lt;/p&gt;
+&lt;h3&gt;uniqush-conn handles connections between server and apps&lt;/h3&gt;
+&lt;p&gt;When I say &lt;em&gt;server&lt;/em&gt;, I mean an entity that may consists of more than
+one node. This means it may be a cloud, a cluster, more precisely, or
+even a datacenter. (OK. it may be, if they want, several datacenters.)&lt;/p&gt;
+&lt;p&gt;Imagine you have an app, let's say an online chat app, needs to
+connect your server directly once it is active. You may define
+the word &lt;em&gt;active&lt;/em&gt; under your context. In most cases, it is when the
+app is in front, i.e. user is using the app on his phone now. If the
+server sends a message to the app now, the server may want to use this
+direct connection instead of push service cloud to send this message.&lt;/p&gt;
+&lt;p&gt;In an example of online chat app, user A sends a message to
+user B. User A first start his app on the phone. The app then connects to
+the server saying "I'm A and am online now". From now on, the
+app on user A's phone is active and a connection between the app
+ and the server is established. User A wants to chat
+with B. He types in some message, click send button and the message is
+sent to the server through the newly established connection. The
+server unpacks the message seeing it is a message for B. It checks
+whether B is online/active now. If B is online, then there's a
+connection between the server and B, the server can send the message
+through this connection. If B is not, then the server will send some
+message, saying "Hey, B, you got a message from A, check it!" through
+push service clouds (C2DM, APNs, etc.).&lt;/p&gt;
+&lt;p&gt;If the server in the previous example is using facilities from
+uniqush, then it may use &lt;em&gt;uniqush-push&lt;/em&gt; to send message through push
+service clouds, and use &lt;em&gt;uniqush-conn&lt;/em&gt; to deal with active connections
+between the server and apps.&lt;/p&gt;
+&lt;p&gt;In fact, the server does not even need to know if a certain user is
+online or not. &lt;em&gt;uniqush-conn&lt;/em&gt; can deal with it and decide whether send
+message through a direct connection, or through &lt;em&gt;uniqush-push&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Now we can see the benefit. As a server-side developer, you only need
+to send a message to &lt;em&gt;uniqush-conn&lt;/em&gt;, and say "Send this message to
+user B". Then you are done. What if the user B was offline? Well,
+&lt;em&gt;uniqush-conn&lt;/em&gt; could then automatically tell &lt;em&gt;uniqush-push&lt;/em&gt; to push a
+notification to user B. If the message if too big to be fit into a
+notification, &lt;em&gt;uniqush-conn&lt;/em&gt; will send a notification to user B,
+saying ``You got a message'', keep a temporary copy of that message
+and send the message to user B once it's online. The server even does
+not know the existence of &lt;em&gt;uniqush-push&lt;/em&gt;.&lt;/p&gt;
+&lt;h3&gt;uniqush-front handles scale-out growth&lt;/h3&gt;
+&lt;p&gt;As I mentioned, &lt;em&gt;server&lt;/em&gt; side may consists of more than one
+node. With the increasing of number of connections, growing in a
+scale-out way should be a concern for server developers. We introduce
+&lt;em&gt;uniqush-front&lt;/em&gt; to handle connections distributed among several
+instances of &lt;em&gt;uniqush-conn&lt;/em&gt; in more than one nodes (or cloud
+instances). The server-side program will finally only communicate with
+&lt;em&gt;uniqush-front&lt;/em&gt; without knowing which instance of &lt;em&gt;uniqush-conn&lt;/em&gt;
+handles which connection. The protocol between server and
+&lt;em&gt;uniqush-front&lt;/em&gt; will be exactly the same as the protocol between
+server and &lt;em&gt;uniqush-conn&lt;/em&gt;. So that changing from &lt;em&gt;uniqush-conn&lt;/em&gt; to
+&lt;em&gt;uniqush-front&lt;/em&gt; will not lead to change of code.&lt;/p&gt;
+&lt;p&gt;Suppose the server side has 10 nodes. Each node runs an instance of
+&lt;em&gt;uniqush-conn&lt;/em&gt;. A certain user may connect one of the instance on some
+node. The server side program only need to tell &lt;em&gt;uniqush-front&lt;/em&gt; what
+message needs to be sent to which user. Then &lt;em&gt;uniqush-front&lt;/em&gt; will
+figure out which instance of &lt;em&gt;uniqush-conn&lt;/em&gt; should be use. Adding more
+node will not be a pain because the server side program won't be
+changed.&lt;/p&gt;
+&lt;h3&gt;uniqush-mobile-libs helps app developers&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;uniqush-conn&lt;/em&gt; keeps connections between apps and the server. It also
+ sends messages, commands to apps. The app developers do not need to
+ know details about how to communicate with
+ &lt;em&gt;uniqush-conn&lt;/em&gt;. &lt;em&gt;uniqush-mobile-libs&lt;/em&gt; will contain libraries for
+ popular mobile platforms so that app developers can use it to
+ communicate with &lt;em&gt;uniqush-conn&lt;/em&gt;, hence with the server side program.&lt;/p&gt;
+&lt;h3&gt;When?&lt;/h3&gt;
+&lt;p&gt;&lt;em&gt;uniqush-push&lt;/em&gt; is already there. I only need to change its name from
+ &lt;em&gt;uniqushd&lt;/em&gt; to &lt;em&gt;uniqush-push&lt;/em&gt;. I will start developing &lt;em&gt;uniqush-conn&lt;/em&gt;
+in this week and (hopefully) &lt;em&gt;uniqush-conn&lt;/em&gt; and &lt;em&gt;uniqush-mobile-libs&lt;/em&gt;
+will be released before Sep. 2012.&lt;/p&gt;
+&lt;p&gt;I wish I can make it faster. But sorry for disappointing you, it seems
+impossible for me: there is only one developer in this project, and
+yes, I am the developer. If you are interested in this project and
+want to make your own contribution, please feel free to contact me.&lt;/p&gt;
+&lt;h3&gt;Update&lt;/h3&gt;
+&lt;p&gt;As I mentioned, &lt;em&gt;uniqush-push&lt;/em&gt; is online now. It is more than a
+renaming work. All related documents are changed respectively. If you
+find any inconsistence between the document and the code, please let
+me know. Thank you very much.&lt;/p&gt;</content><category term="uniqush"></category><category term="golang"></category><category term="Go1"></category><category term="plan"></category></entry><entry><title>Hello World! Hello Uniqush!</title><link href="http://blog.uniqush.org/hello-world.html" rel="alternate"></link><published>2012-03-02T00:00:00+01:00</published><updated>2012-03-02T00:00:00+01:00</updated><author><name>Monnand</name></author><id>tag:blog.uniqush.org,2012-03-02:/hello-world.html</id><summary type="html">&lt;p&gt;I started &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; in Aug. 2011, when I was reading
+documents about push service. The idea of this project is simple: build a
+software as a proxy between the app server and push services, so that the
+server side programmer could use a simple and consistent interface to push
+message …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I started &lt;a href="http://uniqush.org"&gt;uniqush&lt;/a&gt; in Aug. 2011, when I was reading
+documents about push service. The idea of this project is simple: build a
+software as a proxy between the app server and push services, so that the
+server side programmer could use a simple and consistent interface to push
+message to any mobile device.&lt;/p&gt;
+&lt;p&gt;After about one month of development, the first functional version was online
+and also the &lt;a href="http://uniqush.org"&gt;web site&lt;/a&gt;. Once it becomes a free/open-source
+software project, it is more than coding work. Maintaining such a project is
+&lt;a href="http://antirez.com/post/one-year-of-redis.html"&gt;not a trivial work&lt;/a&gt; even for
+experienced developers. Although I did not widely announce the birth of
+uniqush, I did make my best effort to build a bridge between my project and my
+(potential) users. That is why I spend lots of time on &lt;a href="http://uniqush.org/wiki/UniqushStory"&gt;drawing
+work&lt;/a&gt;, and hence this blog.&lt;/p&gt;
+&lt;p&gt;Interaction with users are crucial to a software project. Although
+&lt;a href="http://github.com/monnand/uniqush"&gt;github&lt;/a&gt; provides plenty of means for such
+purpose, a blog may be a simple and effective way to make announcement and get
+feedback immediately.&lt;/p&gt;
+&lt;p&gt;Hence, I set up this blog hoping to hear the voice from the early or potential
+users of uniqush. If you have any comment on this project, please let me know.&lt;/p&gt;</content><category term="uniqush"></category><category term="golang"></category></entry></feed>

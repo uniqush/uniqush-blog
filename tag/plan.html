@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Uniqush Blog - plan</title>
+    <meta name="description" content="">
+    <meta name="author" content="Monnand">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/uniqush-blog/theme/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="/uniqush-blog/theme/bootstrap.min.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/bootstrap.min.responsive.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/local.css" rel="stylesheet">
+    <link href="/uniqush-blog/theme/pygments.css" rel="stylesheet">
+
+    <!-- So Firefox can bookmark->"abo this site" -->
+        <link href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate" title="Uniqush Blog" type="application/atom+xml">
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-inner">
+    <div class="container">
+
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+         </a>
+
+        <a class="brand" href="http://blog.uniqush.org">Uniqush Blog</a>
+
+        <div class="nav-collapse">
+        <ul class="nav">
+            
+        </ul>
+        </div>
+        
+    </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+    <div class="row">
+
+        <div class="span9">
+        
+
+        
+
+
+    <div class='article'>
+        <div class="content-title">
+            <a href="http://blog.uniqush.org/uniqush-push-1-4-3.html"><h1>Release 1.4.3 and uniqush-conn</h1></a>
+Tue 14 May 2013
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ 
+        </div>
+        
+        <div><p>This version contains some minor bug fixes and includes some hidden features
+which will be used by <a href="http://github.com/uniqush/uniqush-conn">uniqush-conn</a>. The <a href="http://uniqush.org/release-notes/rn-uniqush-push-1-4-3.html">release note</a> explains all the
+changes.</p>
+<p>Instead of the changes themselves, in this post, I would like to talk about how
+they related to the <a href="http://github.com/uniqush/uniqush-conn">uniqush-conn</a> and what's the next step.</p>
+<h3>Hidden features? Why?</h3>
+<p>Well. This is a free and open source project. There is nothing hide from users.
+However, hidden feature here means something for internal use and may be
+changed or even deleted in the future. Users should not depend upon those
+features.</p>
+<p>To make those features isolated from daily use, we introduced a set of
+parameters that users should avoid using them. When you send an HTTP request to
+<em>uniqush-push</em>, you send several parameters. Any parameters whose name starting
+from <code>uniqush.</code> should be considered as a <em>reserved parameter</em> and users
+should not use those parameters. This is a very easy way of separating name
+space and fortunately, <em>uniqush</em> is not a common word.</p>
+<h3>uniqush-conn? Are you still working on it?</h3>
+<p>Yes. Definitely. Good news: it is almost done and in fact, you can <a href="https://github.com/uniqush/uniqush-conn/wiki/Play-with-examples">play with
+it</a> right now.
+Moreover, you can even use our <a href="http://github.com/uniqush/uniqush-client-java">java
+library</a> and learn how to use it
+with <a href="https://github.com/uniqush/uniqush-client-java/tree/master/src/org/uniqush/examples/java">the
+example</a>.</p>
+<p>So what am I waiting for? Why not release it and have all the fun?</p>
+<p>As I promised, there should be libraries for mobile clients. Right now, I'm
+still working on the <a href="https://github.com/uniqush/uniqush-client-android">android
+library</a> and there is still
+zero line of code for iOS library. If I cannot support these two popular
+platforms with the same functionality, I should not release the code.</p>
+<p>But you can still read the code if you are really impatient.</p>
+<h3>What's next?</h3>
+<p>In fact, my focus has switched to <a href="http://github.com/uniqush/uniqush-conn">uniqush-conn</a> and its related libraries in
+recent months. You can tell this from <a href="http://github.com/monnand">my github commit
+history</a>, where I am extending my longest streak by
+working on these projects.</p>
+<p>As I can expect, the <a href="http://github.com/uniqush/uniqush-client-android">android
+library</a> will be coming
+soon. But the iOS library may experience some delay.</p></div>
+        <hr />
+    </div>
+		
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/website-upgrade.html"><h2>Unqiush.org is upgraded</h2></a>
+        <div class= "well small"> Sat 04 August 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>As we mentioned in the <a href="update-2012-07-31.html">previous update</a>, the website of <a href="http://uniqush.org">uniqush.org</a> is now upgraded. All content in previous pages are updated and the whole website is based on static pages generated by <a href="http://webgen.rubyforge.org/">webgen</a>. Besides, we provide <a href="http://uniqush.org/downloads.html">binary packages</a> for 64-bit systems, including .rpm, .deb and .tar.gz.</p>
+<p>Anohter news …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/website-upgrade.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/update-2012-07-31.html"><h2>Big changes are coming soon</h2></a>
+        <div class= "well small"> Tue 31 July 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Given the plan in <a href="http://blog.uniqush.org/uniqush-after-go1.html">uniqush after go1</a>, some changes, which may be considered as big changes, will be made in the coming August.</p>
+<ul>
+<li>A new static website for <a href="http://uniqush.org">uniqush.org</a>. Yes, no more <a href="http://trac.edgewall.org/">trac</a>.</li>
+<li>A new <a href="http://github.com/uniqush">uniqush organization</a> on github is created. All <a href="http://uniqush.org">uniqush</a> related code will be moved under …</li></ul> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/update-2012-07-31.html">read more</a></div>
+    </div>	
+				
+
+ 
+        
+
+ 
+
+    <div class='article'>
+        <a href="http://blog.uniqush.org/uniqush-after-go1.html"><h2>Uniqush after Go 1</h2></a>
+        <div class= "well small"> Wed 28 March 2012
+
+by <a class="url fn" href="http://blog.uniqush.org/author/monnand.html">Monnand</a>
+ 
+
+
+ </div>
+        <div class="summary"><p>Today, March 28th 2012, is a big day for every gopher: Go team
+<a href="http://blog.golang.org/2012/03/go-version-1-is-released.html">released Go version 1</a>. This
+means Go -- both the language itself and its standard library -- is
+stable now. Because of this, I think it's time to move
+<a href="http://uniqush.org">uniqush</a> onto next stage. I would like to share
+the …</p> <a class="btn btn-info xsmall" href="http://blog.uniqush.org/uniqush-after-go1.html">read more</a></div>
+    </div>	
+				
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="http://blog.uniqush.org/tag/plan.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
+        </div>
+        
+        <div class="span3">
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Site
+                </li>
+            
+                <li><a href="http://blog.uniqush.org/archives.html">Archives</a>
+                <li><a href="http://blog.uniqush.org/tags.html">Tags</a>
+
+
+
+                <li><a href="http://blog.uniqush.org/feeds/all.atom.xml" rel="alternate">Atom feed</a></li>
+
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Categories
+                </li>
+                
+                <li><a href="http://blog.uniqush.org/category/dev.html">dev</a></li>
+                <li><a href="http://blog.uniqush.org/category/misc.html">misc</a></li>
+                <li><a href="http://blog.uniqush.org/category/news.html">news</a></li>
+                <li><a href="http://blog.uniqush.org/category/plan.html">plan</a></li>
+                   
+            </ul>
+            </div>
+
+
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Links
+                </li>
+            
+                <li><a href="http://uniqush.org">uniqush.org</a></li>
+                <li><a href="https://github.com/uniqush">uniqush on github</a></li>
+            </ul>
+            </div>
+
+
+            <div class="social">
+            <div class="well" style="padding: 8px 0; background-color: #FBFBFB;">
+            <ul class="nav nav-list">
+                <li class="nav-header"> 
+                Social
+                </li>
+           
+                <li><a href="https://twitter.com/uniqush">twitter</a></li>
+            </ul>
+            </div>
+            </div>
+
+        </div>  
+    </div>     </div> 
+<footer>
+<br />
+<p><a href="http://blog.uniqush.org">Uniqush Blog</a> &copy; Monnand 2013</p>
+</footer>
+
+</div> <!-- /container -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/uniqush-blog/theme/bootstrap-collapse.js"></script>
+ 
+</body>
+</html>
