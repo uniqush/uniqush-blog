@@ -52,7 +52,7 @@ history](http://github.com/monnand), where I am extending my longest streak by
 working on these projects.
 
 As I can expect, the [android
-library](http://github.com/uniqush/uniqush-client-android) will be comming
+library](http://github.com/uniqush/uniqush-client-android) will be coming
 soon. But the iOS library may experience some delay.
 
 [release note]: http://uniqush.org/release-notes/rn-uniqush-push-1-4-3.html
