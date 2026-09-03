@@ -72,7 +72,7 @@ Let's quote [cmabastar-gumi]'s test results mentioned in reply to [issue 27]:
 [release note]: http://uniqush.org/release-notes/rn-uniqush-push-1-4-4.html
 [uniqush-conn]: http://github.com/uniqush/uniqush-conn
 [cmabastar-gumi]: https://github.com/cmabastar-gumi
-[blog]: http://blog.uniqush.org
+[blog]: {index}
 [connection pool]: http://github.com/uniqush/connpool
 [connection pool library]: http://github.com/uniqush/connpool
 [issue 19]: https://github.com/uniqush/uniqush-push/issues/19

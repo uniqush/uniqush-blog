@@ -48,7 +48,7 @@ this community. We appreciate your support!
 [Creative Commons Attribution 3.0 Unported License]: http://creativecommons.org/licenses/by/3.0/
 [downloads]: http://uniqush.org/downloads.html
 [uniqush.org]: http://uniqush.org
-[uniqush blog]: http://blog.uniqush.org
+[uniqush blog]: {index}
 [webgen]: http://webgen.rubyforge.org/
 [pelican]: http://pelican.notmyidea.org/en/3.0/index.html
 [www repository]: http://github.com/uniqush/uniqush-www
