@@ -1,14 +1,10 @@
-# This Dockerfile is dedicated to installing webgen without fiddling around with dependencies.
-FROM ubuntu:18.04
-MAINTAINER Tyson Andre
-RUN apt-get update -y
-RUN apt-get install -y python3 python3-pip && apt-get clean
-# original: pelican-3.7.1 and Markdown-2.6.11
-RUN pip3 install pelican markdown
-RUN apt-get install -y curl unzip && apt-get clean
+# Builds the blog with Pelican. Run via ./main.sh.
+FROM python:3.12-slim
+RUN pip install --no-cache-dir pelican markdown
+RUN apt-get update && apt-get install -y --no-install-recommends git && rm -rf /var/lib/apt/lists/*
 ENV THEME_VERSION=8b244609f5f6fcce30c5324cfa8b1e5c4df0e199
-RUN curl -sSL https://github.com/getpelican/pelican-themes/archive/$THEME_VERSION.zip -o $THEME_VERSION.zip && \
-	unzip $THEME_VERSION.zip && mv pelican-themes-$THEME_VERSION/ /pelican-themes && rm -f *.zip
-RUN pelican-themes -i /pelican-themes/tuxlite_tbs
+RUN git clone --filter=blob:none --no-checkout https://github.com/getpelican/pelican-themes.git /pelican-themes && \
+    cd /pelican-themes && git sparse-checkout set tuxlite_tbs && git checkout -q $THEME_VERSION && \
+    pelican-themes -i /pelican-themes/tuxlite_tbs
 VOLUME /src
 WORKDIR /src
